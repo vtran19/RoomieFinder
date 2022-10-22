@@ -1,0 +1,582 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F9636A0C2904B07F0015E564 /* RoomieFinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */; };
+		F9636A0E2904B07F0015E564 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9636A0D2904B07F0015E564 /* ContentView.swift */; };
+		F9636A102904B0810015E564 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9636A0F2904B0810015E564 /* Assets.xcassets */; };
+		F9636A132904B0810015E564 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9636A122904B0810015E564 /* Preview Assets.xcassets */; };
+		F9636A1D2904B0810015E564 /* RoomieFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9636A1C2904B0810015E564 /* RoomieFinderTests.swift */; };
+		F9636A272904B0810015E564 /* RoomieFinderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9636A262904B0810015E564 /* RoomieFinderUITests.swift */; };
+		F9636A292904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9636A282904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F9636A192904B0810015E564 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9636A002904B07F0015E564 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9636A072904B07F0015E564;
+			remoteInfo = RoomieFinder;
+		};
+		F9636A232904B0810015E564 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9636A002904B07F0015E564 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9636A072904B07F0015E564;
+			remoteInfo = RoomieFinder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F9636A082904B07F0015E564 /* RoomieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderApp.swift; sourceTree = "<group>"; };
+		F9636A0D2904B07F0015E564 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F9636A0F2904B0810015E564 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9636A122904B0810015E564 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F9636A182904B0810015E564 /* RoomieFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomieFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9636A1C2904B0810015E564 /* RoomieFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderTests.swift; sourceTree = "<group>"; };
+		F9636A222904B0810015E564 /* RoomieFinderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoomieFinderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9636A262904B0810015E564 /* RoomieFinderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderUITests.swift; sourceTree = "<group>"; };
+		F9636A282904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F9636A052904B07F0015E564 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9636A152904B0810015E564 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9636A1F2904B0810015E564 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F96369FF2904B07F0015E564 = {
+			isa = PBXGroup;
+			children = (
+				F9636A0A2904B07F0015E564 /* RoomieFinder */,
+				F9636A1B2904B0810015E564 /* RoomieFinderTests */,
+				F9636A252904B0810015E564 /* RoomieFinderUITests */,
+				F9636A092904B07F0015E564 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9636A092904B07F0015E564 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9636A082904B07F0015E564 /* RoomieFinder.app */,
+				F9636A182904B0810015E564 /* RoomieFinderTests.xctest */,
+				F9636A222904B0810015E564 /* RoomieFinderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9636A0A2904B07F0015E564 /* RoomieFinder */ = {
+			isa = PBXGroup;
+			children = (
+				F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */,
+				F9636A0D2904B07F0015E564 /* ContentView.swift */,
+				F9636A0F2904B0810015E564 /* Assets.xcassets */,
+				F9636A112904B0810015E564 /* Preview Content */,
+			);
+			path = RoomieFinder;
+			sourceTree = "<group>";
+		};
+		F9636A112904B0810015E564 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F9636A122904B0810015E564 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F9636A1B2904B0810015E564 /* RoomieFinderTests */ = {
+			isa = PBXGroup;
+			children = (
+				F9636A1C2904B0810015E564 /* RoomieFinderTests.swift */,
+			);
+			path = RoomieFinderTests;
+			sourceTree = "<group>";
+		};
+		F9636A252904B0810015E564 /* RoomieFinderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F9636A262904B0810015E564 /* RoomieFinderUITests.swift */,
+				F9636A282904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift */,
+			);
+			path = RoomieFinderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F9636A072904B07F0015E564 /* RoomieFinder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9636A2C2904B0810015E564 /* Build configuration list for PBXNativeTarget "RoomieFinder" */;
+			buildPhases = (
+				F9636A042904B07F0015E564 /* Sources */,
+				F9636A052904B07F0015E564 /* Frameworks */,
+				F9636A062904B07F0015E564 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RoomieFinder;
+			productName = RoomieFinder;
+			productReference = F9636A082904B07F0015E564 /* RoomieFinder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F9636A172904B0810015E564 /* RoomieFinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9636A2F2904B0810015E564 /* Build configuration list for PBXNativeTarget "RoomieFinderTests" */;
+			buildPhases = (
+				F9636A142904B0810015E564 /* Sources */,
+				F9636A152904B0810015E564 /* Frameworks */,
+				F9636A162904B0810015E564 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9636A1A2904B0810015E564 /* PBXTargetDependency */,
+			);
+			name = RoomieFinderTests;
+			productName = RoomieFinderTests;
+			productReference = F9636A182904B0810015E564 /* RoomieFinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F9636A212904B0810015E564 /* RoomieFinderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9636A322904B0810015E564 /* Build configuration list for PBXNativeTarget "RoomieFinderUITests" */;
+			buildPhases = (
+				F9636A1E2904B0810015E564 /* Sources */,
+				F9636A1F2904B0810015E564 /* Frameworks */,
+				F9636A202904B0810015E564 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9636A242904B0810015E564 /* PBXTargetDependency */,
+			);
+			name = RoomieFinderUITests;
+			productName = RoomieFinderUITests;
+			productReference = F9636A222904B0810015E564 /* RoomieFinderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9636A002904B07F0015E564 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					F9636A072904B07F0015E564 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+					F9636A172904B0810015E564 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = F9636A072904B07F0015E564;
+					};
+					F9636A212904B0810015E564 = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = F9636A072904B07F0015E564;
+					};
+				};
+			};
+			buildConfigurationList = F9636A032904B07F0015E564 /* Build configuration list for PBXProject "RoomieFinder" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F96369FF2904B07F0015E564;
+			productRefGroup = F9636A092904B07F0015E564 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F9636A072904B07F0015E564 /* RoomieFinder */,
+				F9636A172904B0810015E564 /* RoomieFinderTests */,
+				F9636A212904B0810015E564 /* RoomieFinderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F9636A062904B07F0015E564 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9636A132904B0810015E564 /* Preview Assets.xcassets in Resources */,
+				F9636A102904B0810015E564 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9636A162904B0810015E564 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9636A202904B0810015E564 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F9636A042904B07F0015E564 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9636A0E2904B07F0015E564 /* ContentView.swift in Sources */,
+				F9636A0C2904B07F0015E564 /* RoomieFinderApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9636A142904B0810015E564 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9636A1D2904B0810015E564 /* RoomieFinderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9636A1E2904B0810015E564 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9636A272904B0810015E564 /* RoomieFinderUITests.swift in Sources */,
+				F9636A292904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F9636A1A2904B0810015E564 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9636A072904B07F0015E564 /* RoomieFinder */;
+			targetProxy = F9636A192904B0810015E564 /* PBXContainerItemProxy */;
+		};
+		F9636A242904B0810015E564 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9636A072904B07F0015E564 /* RoomieFinder */;
+			targetProxy = F9636A232904B0810015E564 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F9636A2A2904B0810015E564 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F9636A2B2904B0810015E564 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9636A2D2904B0810015E564 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RoomieFinder/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cs275.RoomieFinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F9636A2E2904B0810015E564 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"RoomieFinder/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cs275.RoomieFinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F9636A302904B0810015E564 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cs275.RoomieFinderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoomieFinder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RoomieFinder";
+			};
+			name = Debug;
+		};
+		F9636A312904B0810015E564 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cs275.RoomieFinderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RoomieFinder.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RoomieFinder";
+			};
+			name = Release;
+		};
+		F9636A332904B0810015E564 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cs275.RoomieFinderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RoomieFinder;
+			};
+			name = Debug;
+		};
+		F9636A342904B0810015E564 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.cs275.RoomieFinderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RoomieFinder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F9636A032904B07F0015E564 /* Build configuration list for PBXProject "RoomieFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9636A2A2904B0810015E564 /* Debug */,
+				F9636A2B2904B0810015E564 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9636A2C2904B0810015E564 /* Build configuration list for PBXNativeTarget "RoomieFinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9636A2D2904B0810015E564 /* Debug */,
+				F9636A2E2904B0810015E564 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9636A2F2904B0810015E564 /* Build configuration list for PBXNativeTarget "RoomieFinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9636A302904B0810015E564 /* Debug */,
+				F9636A312904B0810015E564 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9636A322904B0810015E564 /* Build configuration list for PBXNativeTarget "RoomieFinderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9636A332904B0810015E564 /* Debug */,
+				F9636A342904B0810015E564 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F9636A002904B07F0015E564 /* Project object */;
+}
