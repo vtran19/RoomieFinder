@@ -12,9 +12,9 @@ struct ContentView: View {
     @State var showFeed = false
     var body: some View {
         if showFeed == false {
-            LoginView2(showFeed: $showFeed)
+            LoginView(showFeed: $showFeed)
         } else {
-            FeedScreen()
+            FeedScreen(showFeed: $showFeed)
         }
         
     }
@@ -22,7 +22,7 @@ struct ContentView: View {
 }
 
 // Login view screen
-struct LoginView2: View {
+struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     
@@ -72,11 +72,29 @@ struct LoginButton : View {
 }
 
 struct FeedScreen: View {
+    @Binding var showFeed: Bool
     var body: some View {
         VStack {
             Text("You logged in!")
                 .bold()
+            Button(action: {
+                self.showFeed = false
+            }) {
+                HomeButton()
+            }
         }
+    }
+}
+
+struct HomeButton: View {
+    var body: some View {
+        return Text("HOME")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 200, height: 60)
+            .background(Color.blue)
+            .cornerRadius(10.0)
     }
 }
 
