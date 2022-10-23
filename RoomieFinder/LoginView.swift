@@ -11,10 +11,9 @@ struct LoginView: View {
     @State var password: String = ""
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
             Text("Roomie Finder")
+                .font(.largeTitle)
+                .bold()
             TextField("Username", text: $username)
                 .padding()
                 .background()
@@ -27,6 +26,9 @@ struct LoginView: View {
                 .padding(.bottom, 20)
         }
         .padding()
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
+                .accentColor(Color.black)
+                .background(Color.green)
     }
 }
 
