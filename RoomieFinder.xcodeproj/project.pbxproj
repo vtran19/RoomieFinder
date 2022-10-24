@@ -16,6 +16,10 @@
 		F9636A292904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9636A282904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift */; };
 		F9BEAB37290700CA00CC7D32 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB36290700CA00CC7D32 /* LoginView.swift */; };
 		F9BEAB392907017900CC7D32 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB382907017900CC7D32 /* FeedView.swift */; };
+		F9BEAB3B2907079300CC7D32 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB3A2907079300CC7D32 /* SignUpView.swift */; };
+		F9BEAB3D290707CE00CC7D32 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB3C290707CE00CC7D32 /* StartView.swift */; };
+		F9BEAB3F2907085A00CC7D32 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB3E2907085A00CC7D32 /* ChatView.swift */; };
+		F9BEAB41290709AA00CC7D32 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB40290709AA00CC7D32 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,10 @@
 		F9636A282904B0810015E564 /* RoomieFinderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F9BEAB36290700CA00CC7D32 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F9BEAB382907017900CC7D32 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		F9BEAB3A2907079300CC7D32 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		F9BEAB3C290707CE00CC7D32 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		F9BEAB3E2907085A00CC7D32 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		F9BEAB40290709AA00CC7D32 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +108,11 @@
 			children = (
 				F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */,
 				F9636A0D2904B07F0015E564 /* ContentView.swift */,
+				F9BEAB3A2907079300CC7D32 /* SignUpView.swift */,
 				F9BEAB382907017900CC7D32 /* FeedView.swift */,
+				F9BEAB40290709AA00CC7D32 /* ProfileView.swift */,
+				F9BEAB3C290707CE00CC7D32 /* StartView.swift */,
+				F9BEAB3E2907085A00CC7D32 /* ChatView.swift */,
 				F9BEAB36290700CA00CC7D32 /* LoginView.swift */,
 				F9636A0F2904B0810015E564 /* Assets.xcassets */,
 				F9636A112904B0810015E564 /* Preview Content */,
@@ -263,8 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9BEAB41290709AA00CC7D32 /* ProfileView.swift in Sources */,
 				F9BEAB392907017900CC7D32 /* FeedView.swift in Sources */,
+				F9BEAB3B2907079300CC7D32 /* SignUpView.swift in Sources */,
 				F9BEAB37290700CA00CC7D32 /* LoginView.swift in Sources */,
+				F9BEAB3D290707CE00CC7D32 /* StartView.swift in Sources */,
+				F9BEAB3F2907085A00CC7D32 /* ChatView.swift in Sources */,
 				F9636A0E2904B07F0015E564 /* ContentView.swift in Sources */,
 				F9636A0C2904B07F0015E564 /* RoomieFinderApp.swift in Sources */,
 			);
