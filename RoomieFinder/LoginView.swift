@@ -10,7 +10,7 @@ struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
     
-    @Binding var showFeed: Bool
+    @Binding var screen: String
     
     var body: some View {
         VStack {
@@ -30,7 +30,7 @@ struct LoginView: View {
             Button(action: {
                 //TODO: add logic for authentication here or function
                 print("Logged In")
-                self.showFeed = true
+                self.screen = "feed"
                 }) {
                 LoginButton()
             }

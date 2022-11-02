@@ -6,14 +6,14 @@ import SwiftUI
 
 struct FeedView: View {
     // Binds showFeed to State in Content View
-    @Binding var showFeed: Bool
+    @Binding var screen: String
     
     var body: some View {
         VStack {
             Text("You logged in!")
                 .bold()
             Button(action: {
-                self.showFeed = false
+                self.screen = "login"
             }) {
                 HomeButton()
             }

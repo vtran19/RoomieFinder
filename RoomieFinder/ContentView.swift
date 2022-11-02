@@ -10,14 +10,14 @@ import SwiftUI
 // Overall view
 struct ContentView: View {
     // Boolean value for whether or not to show feed
-    @State var showFeed = false
+    @State var screen = "login"
     
     var body: some View {
         // Shows screen according to boolean showFeed
-        if showFeed == false {
-            LoginView(showFeed: $showFeed)
+        if screen == "login" {
+            LoginView(screen: $screen)
         } else {
-            FeedView(showFeed: $showFeed)
+            FeedView(screen: $screen)
         }
     }
 }
