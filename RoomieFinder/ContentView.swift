@@ -24,18 +24,20 @@ struct ContentView: View {
         }
         else if screen == "profile"{
             ProfileView(screen: $screen)
-        }else {
-            FeedView(screen: $screen)
-        } else if screen == "chat" {
+        }else  {
+         FeedView(screen: $screen)
+        }
+        else if screen == "chat"{
             ChatView(screen: $screen)
         } else if screen == "profile" {
-            ProfileView(screen: $screen)
+        ProfileView(screen: $screen)
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
-}
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+    }
+
