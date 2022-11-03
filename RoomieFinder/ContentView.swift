@@ -10,7 +10,7 @@ import SwiftUI
 // Overall view
 struct ContentView: View {
     // String value for what screen to show
-    @State var screen = "login"
+    @State var screen = "start"
     
     var body: some View {
         // Shows screen according to boolean showFeed
@@ -22,7 +22,11 @@ struct ContentView: View {
             SignUpView(screen: $screen)
         } else if screen == "feed" {
             FeedView(screen: $screen)
-        }else if screen == "profile"{
+        } else if screen == "profile"{
+            ProfileView(screen: $screen)
+        } else if screen == "chat" {
+            //ChatView(screen: $screen)
+        } else if screen == "profile" {
             ProfileView(screen: $screen)
         } else if screen == "chat"{
             ChatView(screen: $screen)
