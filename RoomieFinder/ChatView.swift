@@ -6,3 +6,17 @@
 //
 
 import SwiftUI
+
+struct ChatView: View {
+    @Binding var screen: String
+    var body: some View {
+        Text("Hello, World!")
+        VStack {
+            Text("chat")
+                .font(.largeTitle)
+                .bold()
+        }
+    }
+}
+
+

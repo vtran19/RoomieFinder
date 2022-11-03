@@ -28,12 +28,14 @@ struct ContentView: View {
             //ChatView(screen: $screen)
         } else if screen == "profile" {
             ProfileView(screen: $screen)
+        } else if screen == "chat"{
+            ChatView(screen: $screen)
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
 }
