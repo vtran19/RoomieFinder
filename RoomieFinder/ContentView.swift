@@ -10,7 +10,7 @@ import SwiftUI
 // Overall view
 struct ContentView: View {
     // String value for what screen to show
-    @State var screen = "login"
+    @State var screen = "start"
     
     var body: some View {
         // Shows screen according to boolean showFeed
