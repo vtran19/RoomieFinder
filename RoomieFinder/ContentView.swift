@@ -9,18 +9,27 @@ import SwiftUI
 
 // Overall view
 struct ContentView: View {
-    // Boolean value for whether or not to show feed
+    // String value for what screen to show
     @State var screen = "login"
     
     var body: some View {
         // Shows screen according to boolean showFeed
-        if screen == "login" {
+        if screen == "start" {
+            StartView(screen: $screen)
+        } else if screen == "login" {
             LoginView(screen: $screen)
+        } else if screen == "signup" {
+            SignUpView(screen: $screen)
+        } else if screen == "feed" {
         }
         else if screen == "profile"{
             ProfileView(screen: $screen)
         }else {
             FeedView(screen: $screen)
+        } else if screen == "chat" {
+            ChatView(screen: $screen)
+        } else if screen == "profile" {
+            ProfileView(screen: $screen)
         }
     }
 }
