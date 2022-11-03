@@ -16,7 +16,10 @@ struct ContentView: View {
         // Shows screen according to boolean showFeed
         if screen == "login" {
             LoginView(screen: $screen)
-        } else {
+        }
+        else if screen == "profile"{
+            ProfileView(screen: $screen)
+        }else {
             FeedView(screen: $screen)
         }
     }

@@ -17,6 +17,11 @@ struct FeedView: View {
             }) {
                 HomeButton()
             }
+            Button(action: {
+                self.screen = "profile"
+            }) {
+                ProfileButton()
+            }
         }
     }
 }
@@ -24,6 +29,18 @@ struct FeedView: View {
 struct HomeButton: View {
     var body: some View {
         return Text("HOME")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 200, height: 60)
+            .background(Color.blue)
+            .cornerRadius(10.0)
+    }
+}
+
+struct ProfileButton: View {
+    var body: some View {
+        return Text("PROFILE")
             .font(.headline)
             .foregroundColor(.white)
             .padding()
