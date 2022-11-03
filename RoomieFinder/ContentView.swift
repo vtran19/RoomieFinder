@@ -21,18 +21,12 @@ struct ContentView: View {
         } else if screen == "signup" {
             SignUpView(screen: $screen)
         } else if screen == "feed" {
-        }
-        else if screen == "profile"{
+            FeedView(screen: $screen)
+        }else if screen == "profile"{
             ProfileView(screen: $screen)
-        }else  {
-         FeedView(screen: $screen)
-        }
-        else if screen == "chat"{
+        } else if screen == "chat"{
             ChatView(screen: $screen)
-        } else if screen == "profile" {
-        ProfileView(screen: $screen)
         }
-    }
     }
     
     struct ContentView_Previews: PreviewProvider {
@@ -40,4 +34,4 @@ struct ContentView: View {
             ContentView()
         }
     }
-
+}
