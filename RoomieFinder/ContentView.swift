@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+
 // Overall view
 struct ContentView: View {
+    
+    
     // String value for what screen to show
     @State var screen = "start"
     
