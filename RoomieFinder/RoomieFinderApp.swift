@@ -22,8 +22,7 @@ struct RoomieFinderApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-    //var ref: DatabaseReference!
-    var ref = Database.database().reference()
+    
     
     var body: some Scene {
         WindowGroup {

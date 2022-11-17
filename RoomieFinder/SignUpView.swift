@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 
 // Login view screen
 struct SignUpView: View {
@@ -14,6 +15,7 @@ struct SignUpView: View {
     @State var verifying: String = ""
     
     @Binding var screen: String
+    @Binding var ref: DatabaseReference!
     
     var body: some View {
         VStack {
@@ -39,6 +41,9 @@ struct SignUpView: View {
                 Button(action: {
                     //TODO: add logic for authentication here or function
                     print("Signed Up")
+                    self.ref = Database.database().reference()
+                    let password = self.password as NSString
+                    self.ref.child("users/\(self.username)/").setValue(["password": password])
                     self.screen = "profile"
                     }) {
                     SignUpButton()
