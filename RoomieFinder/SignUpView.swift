@@ -38,35 +38,21 @@ struct SignUpView: View {
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
             if verify_pass(pass: password, verify: verifying) {
-                Button(action: {
+                Button("SIGN UP") {
                     //TODO: add logic for authentication here or function
-                    print("Signed Up")
-                    self.ref = Database.database().reference()
-                    let password = self.password as NSString
-                    self.ref.child("users/\(self.username)/").setValue(["password": password])
-                    self.screen = "profile"
-                    }) {
-                    SignUpButton()
-                }
+                    print("Signed Up");
+                    self.ref = Database.database().reference();
+                    let password = self.password as NSString;
+                    self.ref.child("users/\(self.username)/").setValue(["password": password]);
+                    self.screen = "profile";
+                    }
+                .buttonStyle(BlueButton())
             }
         }
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
                 .background(Color.green)
-    }
-}
-
-// Login button styling
-struct SignUpButton : View {
-    var body: some View {
-        return Text("SIGNUP")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
     }
 }
 
