@@ -15,34 +15,13 @@ struct ProfileView: View {
         VStack {
             Text("this is your profile woohoo")
                 .bold()
-            Button(action: {
+            Button("CHAT") {
                 //TODO: add logic for authentication here or function
-                print("Chat")
-                self.screen = "chat"
-                }) {
-                ChatButton()
-            }
+                print("Chat");
+                self.screen = "chat";
+                }
+            .buttonStyle(BlueButton())
         }
             
         }
     }
-    
-    
-    // Login button styling
-    struct ChatButton : View {
-        var body: some View {
-            return Text("chat")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .frame(width: 200, height: 60)
-                .background(Color.blue)
-                .cornerRadius(10.0)
-        }
-    }
-
-
-    
-
-
-
