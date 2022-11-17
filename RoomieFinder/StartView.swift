@@ -19,7 +19,7 @@ struct StartView: View {
                 ToLogin()
             }
             Button(action: {
-                self.screen = "sign up"
+                self.screen = "signup"
                 }) {
                 ToSignUp()
             }

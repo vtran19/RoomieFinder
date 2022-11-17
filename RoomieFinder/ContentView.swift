@@ -27,8 +27,6 @@ struct ContentView: View {
             FeedView(screen: $screen)
         } else if screen == "profile"{
             ProfileView(screen: $screen)
-        } else if screen == "chat" {
-            //ChatView(screen: $screen)
         } else if screen == "profile" {
             ProfileView(screen: $screen)
         } else if screen == "chat"{
