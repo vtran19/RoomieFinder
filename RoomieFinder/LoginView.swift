@@ -27,30 +27,16 @@ struct LoginView: View {
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            Button(action: {
+            Button("LOG IN") {
                 //TODO: add logic for authentication here or function
-                print("Logged In")
+                print("Logged In");
                 self.screen = "feed"
-                }) {
-                LoginButton()
             }
+            .buttonStyle(BlueButton())
         }
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
                 .background(Color.green)
-    }
-}
-
-// Login button styling
-struct LoginButton : View {
-    var body: some View {
-        return Text("LOGIN")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
     }
 }
