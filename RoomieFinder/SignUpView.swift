@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 
 // Login view screen
 struct SignUpView: View {
     @State var username: String = ""
     @State var password: String = ""
+    @State var verifying: String = ""
     
     @Binding var screen: String
+    @Binding var ref: DatabaseReference!
     
     var body: some View {
         VStack {
@@ -29,17 +32,22 @@ struct SignUpView: View {
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            TextField("Verify Password", text: $password)
+            TextField("Verify Password", text: $verifying)
                 .padding()
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
-            Button(action: {
-                //TODO: add logic for authentication here or function
-                print("Signed Up")
-                self.screen = "profile"
-                }) {
-                SignUpButton()
+            if verify_pass(pass: password, verify: verifying) {
+                Button(action: {
+                    //TODO: add logic for authentication here or function
+                    print("Signed Up")
+                    self.ref = Database.database().reference()
+                    let password = self.password as NSString
+                    self.ref.child("users/\(self.username)/").setValue(["password": password])
+                    self.screen = "profile"
+                    }) {
+                    SignUpButton()
+                }
             }
         }
         .padding()
@@ -59,6 +67,16 @@ struct SignUpButton : View {
             .frame(width: 200, height: 60)
             .background(Color.blue)
             .cornerRadius(10.0)
+    }
+}
+
+func verify_pass (pass: String, verify: String)-> Bool {
+    if pass == verify {
+        print("passwords match")
+        return true
+    } else {
+        print("passwords do not match")
+        return false
     }
 }
 
