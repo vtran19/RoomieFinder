@@ -13,16 +13,14 @@ struct StartView: View {
     
     var body: some View {
         VStack {
-            Button(action: {
+            Button("LOG IN") {
                 self.screen = "login"
-                }) {
-                ToLogin()
             }
-            Button(action: {
+            .buttonStyle(BlueButton())
+            Button("SIGN UP") {
                 self.screen = "signup"
-                }) {
-                ToSignUp()
             }
+            .buttonStyle(BlueButton())
         }
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
@@ -30,29 +28,3 @@ struct StartView: View {
                 .background(Color.green)
     }
 }
-
-// Login button styling
-struct ToLogin : View {
-    var body: some View {
-        return Text("LOGIN")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
-    }
-}
-
-struct ToSignUp : View {
-    var body: some View {
-        return Text("SIGN UP")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
-    }
-}
-

@@ -42,3 +42,16 @@ struct ContentView: View {
         }
     }
 }
+
+// button styling
+struct BlueButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 200, height: 60)
+            .background(Color.blue)
+            .cornerRadius(10.0)
+    }
+}
