@@ -20,11 +20,9 @@ struct ContentView: View {
             LoginView(screen: $screen)
         } else if screen == "signup" {
             SignUpView(screen: $screen)
-        } else if screen == "feed" {
-        }
-        else if screen == "profile"{
+        } else if screen == "profile"{
             ProfileView(screen: $screen)
-        }else {
+        } else if screen == "feed"{
             FeedView(screen: $screen)
         } else if screen == "chat" {
             ChatView(screen: $screen)
