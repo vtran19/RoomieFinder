@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var screen = "start"
     //var ref: DatabaseReference!
     @State var ref: DatabaseReference!
+    // TODO: create state for username and pass to signup view
     
     var body: some View {
         // Shows screen according to boolean showFeed

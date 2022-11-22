@@ -19,31 +19,47 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
+            // Title
             Text("Roomie Finder")
                 .font(.largeTitle)
                 .bold()
+            // Username text field
             TextField("Create Username", text: $username)
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
                 .padding()
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
+            // Password text field
             TextField("Create Password", text: $password)
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
                 .padding()
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
+            // Verify password text field
             TextField("Verify Password", text: $verifying)
+                .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
                 .padding()
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
+            // If passwords match, store data into database
             if verify_pass(pass: password, verify: verifying) {
                 Button("SIGN UP") {
-                    //TODO: add logic for authentication here or function
                     print("Signed Up");
+                    
+                    // Assign database reference
                     self.ref = Database.database().reference();
+                    
+                    // Store password to path users/$username/password in database
                     let password = self.password as NSString;
                     self.ref.child("users/\(self.username)/").setValue(["password": password]);
+                    
+                    // Change screen to user profile
                     self.screen = "profile";
                     }
                 .buttonStyle(BlueButton())
@@ -56,8 +72,16 @@ struct SignUpView: View {
     }
 }
 
+/**
+    Checks if passwords two user-inputed passwords match
+    - Parameters:
+        - pass: first password
+        - verify: second password
+    - Returns boolean for if the strings match
+ */
 func verify_pass (pass: String, verify: String)-> Bool {
-    if pass == verify {
+    // TODO: create minimum criteria for password and validate here
+    if pass == verify && pass != "" {
         print("passwords match")
         return true
     } else {
