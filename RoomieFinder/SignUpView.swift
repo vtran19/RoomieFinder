@@ -8,14 +8,19 @@
 import SwiftUI
 import FirebaseDatabase
 
-// Login view screen
+// Sign up view screen
 struct SignUpView: View {
-    @State var username: String = ""
+    
+    // Initialize variables
     @State var password: String = ""
     @State var verifying: String = ""
+    @State var first: String = ""
+    @State var last: String = ""
     
+    // Bindings for variable passing
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
+    @Binding var username: String
     
     var body: some View {
         VStack {
@@ -26,6 +31,20 @@ struct SignUpView: View {
             // Username text field
             TextField("Create Username", text: $username)
                 .textInputAutocapitalization(.never)
+                .disableAutocorrection(true)
+                .padding()
+                .background()
+                .cornerRadius(5.0)
+                .padding(.bottom, 20)
+            // First Name
+            TextField("First Name", text: $first)
+                .disableAutocorrection(true)
+                .padding()
+                .background()
+                .cornerRadius(5.0)
+                .padding(.bottom, 20)
+            // Last Name
+            TextField("Last Name", text: $last)
                 .disableAutocorrection(true)
                 .padding()
                 .background()
@@ -47,22 +66,29 @@ struct SignUpView: View {
                 .background()
                 .cornerRadius(5.0)
                 .padding(.bottom, 20)
+            
             // If passwords match, store data into database
             if verify_pass(pass: password, verify: verifying) {
                 Button("SIGN UP") {
-                    print("Signed Up");
-                    
                     // Assign database reference
-                    self.ref = Database.database().reference();
+                    self.ref = Database.database().reference()
                     
-                    // Store password to path users/$username/password in database
-                    let password = self.password as NSString;
-                    self.ref.child("users/\(self.username)/").setValue(["password": password]);
+                    // Cast data to compatible values for database
+                    let first = self.first as NSString
+                    let last = self.last as NSString
+                    let password = self.password as NSString
+                    
+                    // Store data into database
+                    self.ref.child("users/\(self.username)/").setValue([
+                        "first": first, "last": last, "password": password, "picture": "null", "bio": "null", "matches": "null"])
                     
                     // Change screen to user profile
-                    self.screen = "profile";
+                    self.screen = "profile"
+                    
                     }
                 .buttonStyle(BlueButton())
+            } else {
+                
             }
         }
         .padding()
@@ -82,10 +108,10 @@ struct SignUpView: View {
 func verify_pass (pass: String, verify: String)-> Bool {
     // TODO: create minimum criteria for password and validate here
     if pass == verify && pass != "" {
-        print("passwords match")
+        //print("passwords match")
         return true
     } else {
-        print("passwords do not match")
+        //print("passwords do not match")
         return false
     }
 }
