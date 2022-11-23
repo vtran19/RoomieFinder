@@ -24,6 +24,15 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
+            // Back Button
+            Button {
+                self.screen = "start"
+            } label: {
+                Image("back")
+                    .resizable()
+                    .position(x: 0, y: 0)
+                    .frame(width: 75, height: 75)
+            }
             // Title
             Text("Roomie Finder")
                 .font(.largeTitle)
@@ -94,7 +103,7 @@ struct SignUpView: View {
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
-                .background(Color.green)
+                .background(Color.white)
     }
 }
 
