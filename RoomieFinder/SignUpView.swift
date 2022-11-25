@@ -125,3 +125,9 @@ func verify_pass (pass: String, verify: String)-> Bool {
     }
 }
 
+
+struct Previews_SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "signup")
+    }
+}

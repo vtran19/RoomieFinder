@@ -40,3 +40,9 @@ struct LoginView: View {
                 .background(Color.green)
     }
 }
+
+struct Previews_LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "login")
+    }
+}

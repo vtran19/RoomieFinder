@@ -28,3 +28,9 @@ struct StartView: View {
                 .background(Color.green)
     }
 }
+
+struct Previews_StartView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "start")
+    }
+}
