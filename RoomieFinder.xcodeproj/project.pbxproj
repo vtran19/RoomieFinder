@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F9145AE5291C78A4009E66CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9145AE4291C78A3009E66CB /* GoogleService-Info.plist */; };
-		F9145AE6291C78A4009E66CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9145AE4291C78A3009E66CB /* GoogleService-Info.plist */; };
-		F9145AE7291C78A4009E66CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9145AE4291C78A3009E66CB /* GoogleService-Info.plist */; };
+		8DCC235629268FC2008C298D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DCC235529268FC1008C298D /* GoogleService-Info.plist */; };
 		F9145AEA291C7BD8009E66CB /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AE9291C7BD8009E66CB /* FirebaseDatabase */; };
 		F9145AEC291C7BD8009E66CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AEB291C7BD8009E66CB /* FirebaseDatabaseSwift */; };
 		F9145AEE291C7BD8009E66CB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AED291C7BD8009E66CB /* FirebaseStorage */; };
@@ -46,7 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F9145AE4291C78A3009E66CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8DCC235529268FC1008C298D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9636A082904B07F0015E564 /* RoomieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderApp.swift; sourceTree = "<group>"; };
 		F9636A0D2904B07F0015E564 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,8 +122,8 @@
 				F9BEAB3C290707CE00CC7D32 /* StartView.swift */,
 				F9BEAB3E2907085A00CC7D32 /* ChatView.swift */,
 				F9BEAB36290700CA00CC7D32 /* LoginView.swift */,
+				8DCC235529268FC1008C298D /* GoogleService-Info.plist */,
 				F9636A0F2904B0810015E564 /* Assets.xcassets */,
-				F9145AE4291C78A3009E66CB /* GoogleService-Info.plist */,
 				F9636A112904B0810015E564 /* Preview Content */,
 			);
 			path = RoomieFinder;
@@ -269,8 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9636A132904B0810015E564 /* Preview Assets.xcassets in Resources */,
+				8DCC235629268FC2008C298D /* GoogleService-Info.plist in Resources */,
 				F9636A102904B0810015E564 /* Assets.xcassets in Resources */,
-				F9145AE5291C78A4009E66CB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +276,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9145AE6291C78A4009E66CB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +283,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9145AE7291C78A4009E66CB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
