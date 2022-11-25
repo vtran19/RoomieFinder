@@ -15,12 +15,11 @@ struct FeedView: View {
             Button("HOME") {
                 self.screen = "login"
             }
-            .buttonStyle(BlueButton())
             Button("PROFILE") {
                 self.screen = "profile"
             }
-            .buttonStyle(BlueButton())
         }
+        .buttonStyle(BlueButton())
     }
 }
 

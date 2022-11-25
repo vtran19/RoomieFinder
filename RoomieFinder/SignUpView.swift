@@ -34,47 +34,20 @@ struct SignUpView: View {
                     .frame(width: 75, height: 75)
             }
             // Title
-            Text("Roomie Finder")
+            Text("Create an Account")
                 .font(.largeTitle)
                 .bold()
-            // Username text field
-            TextField("Create Username", text: $username)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            // First Name
-            TextField("First Name", text: $first)
-                .disableAutocorrection(true)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            // Last Name
-            TextField("Last Name", text: $last)
-                .disableAutocorrection(true)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            // Password text field
-            TextField("Create Password", text: $password)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
-            // Verify password text field
-            TextField("Verify Password", text: $verifying)
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
+            
+                // Username text field
+                TextField("Create Username", text: $username)
+                // First Name
+                TextField("First Name", text: $first)
+                // Last Name
+                TextField("Last Name", text: $last)
+                // Password text field
+                TextField("Create Password", text: $password)
+                // Verify password text field
+                TextField("Verify Password", text: $verifying)
             
             // If passwords match, store data into database
             if verify_pass(pass: password, verify: verifying) {
@@ -93,14 +66,15 @@ struct SignUpView: View {
                     
                     // Change screen to user profile
                     self.screen = "profile"
-                    
                     }
                 .buttonStyle(BlueButton())
             } else {
                 
             }
         }
+        .textFieldStyle(defaultText())
         .padding()
+        .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
                 .background(Color.white)
@@ -125,6 +99,18 @@ func verify_pass (pass: String, verify: String)-> Bool {
     }
 }
 
+// text box styling
+struct defaultText: TextFieldStyle {
+    func _body(configuration: TextField<Self._Label>) -> some View {
+        configuration
+            .frame(width: 250)
+            .textInputAutocapitalization(.never)
+            .disableAutocorrection(true)
+            .padding()
+            .background()
+            .cornerRadius(5.0)
+    }
+}
 
 struct Previews_SignUpView_Previews: PreviewProvider {
     static var previews: some View {

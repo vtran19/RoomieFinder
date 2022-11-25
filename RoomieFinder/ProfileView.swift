@@ -20,10 +20,8 @@ struct ProfileView: View {
                 print("Chat");
                 self.screen = "chat";
                 }
-            .buttonStyle(BlueButton())
         }
-            
-        
+        .buttonStyle(BlueButton())
 }
     }
 

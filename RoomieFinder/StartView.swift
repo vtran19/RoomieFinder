@@ -16,12 +16,11 @@ struct StartView: View {
             Button("LOG IN") {
                 self.screen = "login"
             }
-            .buttonStyle(BlueButton())
             Button("SIGN UP") {
                 self.screen = "signup"
             }
-            .buttonStyle(BlueButton())
         }
+        .buttonStyle(BlueButton())
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
