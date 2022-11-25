@@ -12,10 +12,14 @@ import FirebaseDatabase
 struct ContentView: View {
     
     
-    // String value for what screen to show
+    // State for what screen to show
     @State var screen = "start"
-    //var ref: DatabaseReference!
+    
+    // State for database reference
     @State var ref: DatabaseReference!
+    
+    // State for username
+    @State var username: String = ""
     
     var body: some View {
         // Shows screen according to boolean showFeed
@@ -24,7 +28,7 @@ struct ContentView: View {
         } else if screen == "login" {
             LoginView(screen: $screen)
         } else if screen == "signup" {
-            SignUpView(screen: $screen, ref: $ref)
+            SignUpView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "feed" {
             FeedView(screen: $screen)
         } else if screen == "profile"{
@@ -55,3 +59,5 @@ struct BlueButton: ButtonStyle {
             .cornerRadius(10.0)
     }
 }
+
+

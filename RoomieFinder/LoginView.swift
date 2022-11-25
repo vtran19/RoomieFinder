@@ -18,15 +18,7 @@ struct LoginView: View {
                 .font(.largeTitle)
                 .bold()
             TextField("Username", text: $username)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
             TextField("Password", text: $password)
-                .padding()
-                .background()
-                .cornerRadius(5.0)
-                .padding(.bottom, 20)
             Button("LOG IN") {
                 //TODO: add logic for authentication here or function
                 print("Logged In");
@@ -34,9 +26,16 @@ struct LoginView: View {
             }
             .buttonStyle(BlueButton())
         }
+        .textFieldStyle(defaultText())
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
                 .background(Color.green)
+    }
+}
+
+struct Previews_LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "login")
     }
 }

@@ -10,16 +10,21 @@ struct FeedView: View {
     
     var body: some View {
         VStack {
-            Text("You logged in!")
+            Text("You logged in! This is your feed.")
                 .bold()
             Button("HOME") {
                 self.screen = "login"
             }
-            .buttonStyle(BlueButton())
             Button("PROFILE") {
                 self.screen = "profile"
             }
-            .buttonStyle(BlueButton())
         }
+        .buttonStyle(BlueButton())
+    }
+}
+
+struct Previews_FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "feed")
     }
 }

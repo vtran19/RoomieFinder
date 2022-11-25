@@ -16,15 +16,20 @@ struct StartView: View {
             Button("LOG IN") {
                 self.screen = "login"
             }
-            .buttonStyle(BlueButton())
             Button("SIGN UP") {
                 self.screen = "signup"
             }
-            .buttonStyle(BlueButton())
         }
+        .buttonStyle(BlueButton())
         .padding()
         .frame(maxWidth: .infinity,maxHeight: .infinity)
                 .accentColor(Color.black)
                 .background(Color.green)
+    }
+}
+
+struct Previews_StartView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "start")
     }
 }

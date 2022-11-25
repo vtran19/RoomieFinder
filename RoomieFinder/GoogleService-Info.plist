@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>839406804152-oqr1e5e8gv8mp0gi69eibk3490r63243.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.839406804152-oqr1e5e8gv8mp0gi69eibk3490r63243</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAxs2h7mB7jgbuWOViFREsvNob82omudCk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>839406804152</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.cs275.RoomieFinder</string>
+	<key>PROJECT_ID</key>
+	<string>roomiefinder-d20cc</string>
+	<key>STORAGE_BUCKET</key>
+	<string>roomiefinder-d20cc.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:839406804152:ios:e37de0fad242632172284d</string>
+	<key>DATABASE_URL</key>
+	<string>https://roomiefinder-d20cc-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

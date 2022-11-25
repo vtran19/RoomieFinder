@@ -20,8 +20,13 @@ struct ProfileView: View {
                 print("Chat");
                 self.screen = "chat";
                 }
-            .buttonStyle(BlueButton())
         }
-            
-        }
+        .buttonStyle(BlueButton())
+}
     }
+
+struct Previews_ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "profile")
+    }
+}
