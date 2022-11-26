@@ -65,7 +65,7 @@ struct SignUpView: View {
                         "first": first, "last": last, "password": password, "picture": "null", "bio": "null", "matches": "null"])
                     
                     // Change screen to user profile
-                    self.screen = "profile"
+                    self.screen = "editprofile"
                     }
                 .buttonStyle(BlueButton())
             } else {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D87DA372931961700893E31 /* PreviewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DA362931961700893E31 /* PreviewProfileView.swift */; };
 		8DCC235629268FC2008C298D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DCC235529268FC1008C298D /* GoogleService-Info.plist */; };
 		F9145AEA291C7BD8009E66CB /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AE9291C7BD8009E66CB /* FirebaseDatabase */; };
 		F9145AEC291C7BD8009E66CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AEB291C7BD8009E66CB /* FirebaseDatabaseSwift */; };
@@ -23,7 +24,7 @@
 		F9BEAB3B2907079300CC7D32 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB3A2907079300CC7D32 /* SignUpView.swift */; };
 		F9BEAB3D290707CE00CC7D32 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB3C290707CE00CC7D32 /* StartView.swift */; };
 		F9BEAB3F2907085A00CC7D32 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB3E2907085A00CC7D32 /* ChatView.swift */; };
-		F9BEAB41290709AA00CC7D32 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB40290709AA00CC7D32 /* ProfileView.swift */; };
+		F9BEAB41290709AA00CC7D32 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BEAB40290709AA00CC7D32 /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D87DA362931961700893E31 /* PreviewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProfileView.swift; sourceTree = "<group>"; };
 		8DCC235529268FC1008C298D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9636A082904B07F0015E564 /* RoomieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderApp.swift; sourceTree = "<group>"; };
@@ -60,7 +62,7 @@
 		F9BEAB3A2907079300CC7D32 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		F9BEAB3C290707CE00CC7D32 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		F9BEAB3E2907085A00CC7D32 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		F9BEAB40290709AA00CC7D32 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		F9BEAB40290709AA00CC7D32 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +120,9 @@
 				F9636A0D2904B07F0015E564 /* ContentView.swift */,
 				F9BEAB3A2907079300CC7D32 /* SignUpView.swift */,
 				F9BEAB382907017900CC7D32 /* FeedView.swift */,
-				F9BEAB40290709AA00CC7D32 /* ProfileView.swift */,
+				F9BEAB40290709AA00CC7D32 /* EditProfileView.swift */,
 				F9BEAB3C290707CE00CC7D32 /* StartView.swift */,
+				8D87DA362931961700893E31 /* PreviewProfileView.swift */,
 				F9BEAB3E2907085A00CC7D32 /* ChatView.swift */,
 				F9BEAB36290700CA00CC7D32 /* LoginView.swift */,
 				8DCC235529268FC1008C298D /* GoogleService-Info.plist */,
@@ -293,7 +296,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9BEAB41290709AA00CC7D32 /* ProfileView.swift in Sources */,
+				F9BEAB41290709AA00CC7D32 /* EditProfileView.swift in Sources */,
+				8D87DA372931961700893E31 /* PreviewProfileView.swift in Sources */,
 				F9BEAB392907017900CC7D32 /* FeedView.swift in Sources */,
 				F9BEAB3B2907079300CC7D32 /* SignUpView.swift in Sources */,
 				F9BEAB37290700CA00CC7D32 /* LoginView.swift in Sources */,
