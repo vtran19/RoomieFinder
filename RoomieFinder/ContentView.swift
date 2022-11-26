@@ -21,6 +21,12 @@ struct ContentView: View {
     // State for username
     @State var username: String = ""
     
+    // variables for profile
+    @State var firstname: String = "John"
+    @State var lastname: String = "Smith"
+    @State var location: String = "Burlington, VT"
+    @State var bio: String = "Looking for a rommate"
+    
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
@@ -31,10 +37,10 @@ struct ContentView: View {
             SignUpView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "feed" {
             FeedView(screen: $screen)
-        } else if screen == "profile"{
-            ProfileView(screen: $screen)
-        } else if screen == "profile" {
-            ProfileView(screen: $screen)
+        } else if screen == "editprofile"{
+            EditProfileView(screen: $screen, firstname: $firstname, lastname: $lastname, location: $location, bio: $bio)
+        } else if screen == "viewprofile" {
+            PreviewProfileView(screen: $screen, firstname: $firstname, lastname: $lastname, location: $location, bio: $bio)
         } else if screen == "chat"{
             ChatView(screen: $screen)
         }

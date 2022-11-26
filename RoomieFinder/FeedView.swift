@@ -16,7 +16,7 @@ struct FeedView: View {
                 self.screen = "login"
             }
             Button("PROFILE") {
-                self.screen = "profile"
+                self.screen = "editprofile"
             }
         }
         .buttonStyle(BlueButton())
