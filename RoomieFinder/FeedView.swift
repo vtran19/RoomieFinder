@@ -3,13 +3,33 @@
  */
 
 import SwiftUI
+import FirebaseDatabase
 
 struct FeedView: View {
-    // Binds showFeed to State in Content View
-    @Binding var screen: String
+    // States
+    //@State var curr: Int
+    //@State var users: NSArray
+    @State var image: Image? = nil
     
+    // Bindings
+    @Binding var screen: String
+    @Binding var ref: DatabaseReference!
+
     var body: some View {
         VStack {
+            Text("Roomie Finder")
+                .font(.largeTitle)
+                .bold()
+            Spacer()
+            
+            if (image == nil) {
+                Text("There is no one in your area to match with")
+            } else {
+                image?
+                .resizable()
+                .frame(width: 150, height: 150)
+            }
+            
             Text("You logged in! This is your feed.")
                 .bold()
             Button("HOME") {
@@ -17,6 +37,9 @@ struct FeedView: View {
             }
             Button("PROFILE") {
                 self.screen = "editprofile"
+            }
+            Button("LIKE") {
+                //TODO: Increment users array by 1, get username, get picture from user, change image
             }
         }
         .buttonStyle(BlueButton())
