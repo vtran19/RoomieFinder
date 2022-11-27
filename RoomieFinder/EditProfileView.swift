@@ -33,6 +33,10 @@ struct EditProfileView: View {
             Spacer()
         }
         .textFieldStyle(defaultText())
+        .padding()
+        .padding(.bottom, 20)
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .background(Color("beige"))
     }
 }
 
