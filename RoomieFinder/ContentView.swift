@@ -36,7 +36,7 @@ struct ContentView: View {
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "feed" {
-            FeedView(screen: $screen, ref: $ref)
+            FeedView()
         } else if screen == "editprofile"{
             EditProfileView(screen: $screen, firstname: $firstname, lastname: $lastname, location: $location, bio: $bio)
         } else if screen == "viewprofile" {
