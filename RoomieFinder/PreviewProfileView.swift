@@ -25,7 +25,7 @@ struct PreviewProfileView: View {
                 self.screen = "editprofile"
             }
             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
-                   maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .leading)
+                   maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topLeading)
             .font(.title2)
             Text("\(firstname) \(lastname)")
                 .font(.largeTitle)
@@ -40,7 +40,6 @@ struct PreviewProfileView: View {
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .accentColor(Color.black)
         .background(Color("beige"))
     }
 }

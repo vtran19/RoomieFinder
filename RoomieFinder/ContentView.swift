@@ -25,7 +25,7 @@ struct ContentView: View {
     @State var firstname: String = "John"
     @State var lastname: String = "Smith"
     @State var location: String = "Burlington, VT"
-    @State var bio: String = "Looking for a rommate"
+    @State var bio: String = "Looking for a roommate"
     
     var body: some View {
         // Shows screen according to boolean showFeed
