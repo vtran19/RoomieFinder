@@ -19,4 +19,8 @@ struct ChatView: View {
     }
 }
 
-
+struct Previews_ChatView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "chat")
+    }
+}

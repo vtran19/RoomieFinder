@@ -13,46 +13,29 @@ struct StartView: View {
     
     var body: some View {
         VStack {
-            Button(action: {
+            Image("logo")
+                 .resizable()
+                 .aspectRatio(contentMode: .fill)
+                 .frame(width: 250.0, height: 250.0, alignment: .center)
+                 .clipped()
+            Button("LOG IN") {
                 self.screen = "login"
-                }) {
-                ToLogin()
             }
-            Button(action: {
-                self.screen = "sign up"
-                }) {
-                ToSignUp()
+            Button("SIGN UP") {
+                self.screen = "signup"
             }
         }
+        .buttonStyle(BlueButton())
         .padding()
+        .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .accentColor(Color.black)
-                .background(Color.green)
+        .accentColor(Color.black)
+        .background(Color("beige"))
     }
 }
 
-// Login button styling
-struct ToLogin : View {
-    var body: some View {
-        return Text("LOGIN")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
+struct Previews_StartView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "start")
     }
 }
-
-struct ToSignUp : View {
-    var body: some View {
-        return Text("SIGN UP")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
-    }
-}
-

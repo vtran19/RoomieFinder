@@ -3,49 +3,55 @@
  */
 
 import SwiftUI
+import FirebaseDatabase
 
 struct FeedView: View {
-    // Binds showFeed to State in Content View
-    @Binding var screen: String
+    // States
+    //@State var curr: Int
+    //@State var users: NSArray
+    @State var image: Image? = nil
     
+    // Bindings
+    @Binding var screen: String
+    @Binding var ref: DatabaseReference!
+
     var body: some View {
         VStack {
-            Text("You logged in!")
+            Text("Roomie Finder")
+                .font(.largeTitle)
                 .bold()
-            Button(action: {
-                self.screen = "login"
-            }) {
-                HomeButton()
+            Spacer()
+            
+            if (image == nil) {
+                Text("There is no one in your area to match with")
+            } else {
+                image?
+                .resizable()
+                .frame(width: 150, height: 150)
             }
-            Button(action: {
-                self.screen = "profile"
-            }) {
-                ProfileButton()
+            
+            Text("You logged in! This is your feed.")
+                .bold()
+            Button("HOME") {
+                self.screen = "login"
+            }
+            Button("PROFILE") {
+                self.screen = "editprofile"
+            }
+            Button("LIKE") {
+                //TODO: Increment users array by 1, get username, get picture from user, change image
             }
         }
+        .buttonStyle(BlueButton())
+        .padding()
+        .padding(.bottom, 20)
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .background(Color("beige"))
     }
 }
 
-struct HomeButton: View {
-    var body: some View {
-        return Text("HOME")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
-    }
-}
-
-struct ProfileButton: View {
-    var body: some View {
-        return Text("PROFILE")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 200, height: 60)
-            .background(Color.blue)
-            .cornerRadius(10.0)
+struct Previews_FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "feed")
     }
 }
