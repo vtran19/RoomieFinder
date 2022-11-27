@@ -30,10 +30,12 @@ struct SignUpView: View {
             } label: {
                 Image("back")
                     .resizable()
-                    .position(x: 0, y: 0)
-                    .frame(width: 75, height: 75)
+                    .scaledToFit()
+                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.9,
+                           maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .leading)
             }
             // Title
+            Spacer()
             Text("Create an Account")
                 .font(.largeTitle)
                 .bold()
@@ -71,13 +73,14 @@ struct SignUpView: View {
             } else {
                 
             }
+            Spacer()
         }
         .textFieldStyle(defaultText())
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .accentColor(Color.black)
-                .background(Color.white)
+        .accentColor(Color.black)
+        .background(Color("beige"))
     }
 }
 

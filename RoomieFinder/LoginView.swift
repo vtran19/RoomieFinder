@@ -19,6 +19,7 @@ struct LoginView: View {
                 .bold()
             TextField("Username", text: $username)
             TextField("Password", text: $password)
+                .padding(.bottom, 20)
             Button("LOG IN") {
                 //TODO: add logic for authentication here or function
                 print("Logged In");
@@ -28,9 +29,10 @@ struct LoginView: View {
         }
         .textFieldStyle(defaultText())
         .padding()
+        .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .accentColor(Color.black)
-                .background(Color.green)
+        .accentColor(Color.black)
+        .background(Color("beige"))
     }
 }
 

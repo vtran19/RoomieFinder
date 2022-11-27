@@ -37,6 +37,11 @@ struct PreviewProfileView: View {
                 .border(.pink)
             Spacer()
         }
+        .padding()
+        .padding(.bottom, 20)
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .accentColor(Color.black)
+        .background(Color("beige"))
     }
 }
 
