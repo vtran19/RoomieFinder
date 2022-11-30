@@ -72,11 +72,10 @@ struct LoginView: View {
 }
 
 /**
-    
     Parameters: username, password, and dictionary or users
     Function determines whether the username and password pair occurr in the dictionary
     Returns: true or false
- */
+*/
 func verify_user (username: String, password: String, usersList: NSDictionary)-> Bool {
     // look through usersList to see if the user exists
     var userFound = false
