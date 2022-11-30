@@ -16,7 +16,6 @@ let eggshell = Color(red: 250/255.0, green: 243/255.0, blue: 221/255.0)
 // Overall view
 struct ContentView: View {
     
-    
     // State for what screen to show
     @State var screen = "start"
     
@@ -31,7 +30,6 @@ struct ContentView: View {
     @State var lastname: String = "Smith"
     @State var location: String = "Burlington, VT"
     @State var bio: String = "Looking for a roommate"
-    
     
     var body: some View {
         // Shows screen according to boolean showFeed
