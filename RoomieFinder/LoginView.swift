@@ -2,7 +2,6 @@
     Login View Screen for user login into Roomie FInder
  */
 
-
 import SwiftUI
 
 // Login view screen
@@ -25,14 +24,14 @@ struct LoginView: View {
                 print("Logged In");
                 self.screen = "feed"
             }
-            .buttonStyle(BlueButton())
+            .buttonStyle(OrangeButton())
         }
         .textFieldStyle(defaultText())
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .accentColor(Color.black)
-        .background(Color("beige"))
+        .accentColor(gray)
+        .background(mint)
     }
 }
 

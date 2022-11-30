@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 // Login view screen
 struct StartView: View {
     @Binding var screen: String
@@ -29,8 +30,8 @@ struct StartView: View {
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .accentColor(Color.black)
-        .background(Color("beige"))
+        .accentColor(gray)
+        .background(eggshell)
     }
 }
 

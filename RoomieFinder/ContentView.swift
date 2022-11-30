@@ -7,6 +7,11 @@
 
 import SwiftUI
 import FirebaseDatabase
+let gray = Color(red: 51/255.0, green: 55/255.0, blue: 69/255.0)
+let pink = Color(red: 230/255.0, green: 55/255.0, blue: 191/255.0)
+let orange = Color(red: 254/255.0, green: 95/255.0, blue: 85/255.0)
+let mint = Color(red: 199/255.0, green: 239/255.0, blue: 207/255.0)
+let eggshell = Color(red: 250/255.0, green: 243/255.0, blue: 221/255.0)
 
 // Overall view
 struct ContentView: View {
@@ -25,7 +30,7 @@ struct ContentView: View {
     @State var firstname: String = "John"
     @State var lastname: String = "Smith"
     @State var location: String = "Burlington, VT"
-    @State var bio: String = "Looking for a rommate"
+    @State var bio: String = "Looking for a roommate"
     
     var body: some View {
         // Shows screen according to boolean showFeed
@@ -62,6 +67,19 @@ struct BlueButton: ButtonStyle {
             .padding()
             .frame(width: 200, height: 60)
             .background(Color.blue)
+            .cornerRadius(10.0)
+    }
+}
+
+// button styling
+struct OrangeButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 200, height: 60)
+            .background(orange)
             .cornerRadius(10.0)
     }
 }
