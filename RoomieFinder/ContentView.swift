@@ -32,12 +32,13 @@ struct ContentView: View {
     @State var location: String = "Burlington, VT"
     @State var bio: String = "Looking for a roommate"
     
+    
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
             StartView(screen: $screen)
         } else if screen == "login" {
-            LoginView(screen: $screen)
+            LoginView(screen: $screen, ref: $ref)
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "feed" {
