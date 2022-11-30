@@ -13,6 +13,11 @@ struct StartView: View {
     
     var body: some View {
         VStack {
+            Image("logo")
+                 .resizable()
+                 .aspectRatio(contentMode: .fill)
+                 .frame(width: 250.0, height: 250.0, alignment: .center)
+                 .clipped()
             Button("LOG IN") {
                 self.screen = "login"
             }
@@ -22,9 +27,10 @@ struct StartView: View {
         }
         .buttonStyle(BlueButton())
         .padding()
+        .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .accentColor(Color.black)
-                .background(Color.green)
+        .accentColor(Color.black)
+        .background(Color("beige"))
     }
 }
 

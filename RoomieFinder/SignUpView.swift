@@ -25,15 +25,22 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             // Back Button
+            
             Button {
                 self.screen = "start"
             } label: {
                 Image("back")
                     .resizable()
-                    .position(x: 0, y: 0)
-                    .frame(width: 75, height: 75)
+                    .scaledToFit()
+                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.05,
+                           maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
+                Text("Back")
+                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.9,
+                           maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
             }
+            
             // Title
+            //Spacer()
             Text("Create an Account")
                 .font(.largeTitle)
                 .bold()
@@ -50,7 +57,7 @@ struct SignUpView: View {
                 TextField("Verify Password", text: $verifying)
             
             // If passwords match, store data into database
-            if verify_pass(pass: password, verify: verifying) {
+            if verify_pass(pass: password, verify: verifying) && username != "" && first != "" && last != ""{
                 Button("SIGN UP") {
                     // Assign database reference
                     self.ref = Database.database().reference()
@@ -71,13 +78,14 @@ struct SignUpView: View {
             } else {
                 
             }
+            Spacer()
         }
         .textFieldStyle(defaultText())
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-                .accentColor(Color.black)
-                .background(Color.white)
+        .accentColor(Color.black)
+        .background(Color("beige"))
     }
 }
 
