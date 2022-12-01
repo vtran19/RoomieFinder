@@ -27,8 +27,8 @@ struct FeedView: View {
         
         // Get users in database
         localRef.child("users").observeSingleEvent(of: .value, with: { snapshot in
-            if let usersList = snapshot.value {
-                list = usersList as! [String]
+            if let usersList = snapshot.value as? NSDictionary {
+                //list = usersList as! [String]
                 print("Got users successfully")
             } else {
                 print("Error getting users")
@@ -86,6 +86,10 @@ struct FeedView: View {
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .background(Color("beige"))
     }
+}
+
+func loadFeed() {
+    
 }
 
 struct Previews_FeedView_Previews: PreviewProvider {
