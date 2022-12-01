@@ -14,7 +14,7 @@ struct StartView: View {
     
     var body: some View {
         VStack {
-            Image("logo")
+            Image("roomieLogo")
                  .resizable()
                  .aspectRatio(contentMode: .fill)
                  .frame(width: 250.0, height: 250.0, alignment: .center)
@@ -26,12 +26,12 @@ struct StartView: View {
                 self.screen = "signup"
             }
         }
-        .buttonStyle(BlueButton())
+        .buttonStyle(OrangeButton())
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .accentColor(gray)
-        .background(eggshell)
+        .background(cream)
     }
 }
 

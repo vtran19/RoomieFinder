@@ -38,9 +38,9 @@ struct LoginView: View {
 
                         // ** for testing **
                         // loop through usersList and print the users and their info
-                        //for (username, userInfo) in usersList {
-                        //    print("Username: \(username)\nInformation: \(userInfo)")
-                        //}
+                        for (username, userInfo) in usersList {
+                            print("Username: \(username)\nInformation: \(userInfo)")
+                        }
                         // ** done testing **
                         
                         // call function verify_user to check if user exists
@@ -80,12 +80,22 @@ func verify_user (username: String, password: String, usersList: NSDictionary)->
     // look through usersList to see if the user exists
     var userFound = false
     for (user, userInfo) in usersList {
-        // convert user (type Any) to String
-        if let curr = user as? String {
-            // check if username entered by perosn matches this user
-            if username == curr {
-                userFound = true
-                // TODO: check the password
+        // try to create optional String currUser from user (type=Any)
+        if let currUser = user as? String {
+            // check if username entered matches this user's username
+            if username == currUser {
+                // if the username is correct, check the password
+                // try to create optional dictionary currInfo from userInfo (type=Any)
+                if let currInfo = userInfo as? NSDictionary{
+                    // try to create optional String currPassword from the the entry in currInfo (type=NSDictionary) at key "password"
+                    if let currPassword = currInfo["password"] as? String {
+                        // check if password entered matches this user's password
+                        if password == currPassword {
+                            // if password correct, we found our user
+                            userFound = true
+                        }
+                    }
+                }
             }
         }
     }
