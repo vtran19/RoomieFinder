@@ -17,13 +17,25 @@ struct EditProfileView: View {
     @Binding var bio: String
     
     var body: some View {
+        // everything on the screen arranged vertically
         VStack {
-            Button("Preview Profile"){
-                self.screen = "viewprofile"
+            
+            // buttons at the top of the screen (log out and preview profile) arranged horizontally
+            HStack {
+                Button("Preview Profile"){
+                    self.screen = "viewprofile"
+                }
+                Button("Log Out"){
+                    self.screen = "start"
+                }
+                // button formatting
+                // TODO: fix formatting stuff
+                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
+                       maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
+                .font(.title2)
             }
-            .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
-                   maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
-            .font(.title2)
+            
+            // text boxes to change profile
             Text("Edit Profile")
                 .font(.largeTitle)
             TextField("First Name", text: $firstname)
@@ -31,7 +43,22 @@ struct EditProfileView: View {
             TextField("Location", text: $location)
             TextField("Bio", text: $bio)
             Spacer()
+            
+            // buttons at the bottom of the screen (feed, messages, profile) arranged horizontally
+            HStack {
+                Button("PROFILE") {
+                    self.screen = "editprofile"
+                }
+                Button("MESSAGES") {
+                    self.screen = "chat"
+                }
+                Button("FEED") {
+                    self.screen = "feed"
+                }
+            }
         }
+        
+        // formatting for entire screen maybe?
         .textFieldStyle(defaultText())
         .padding()
         .padding(.bottom, 20)
