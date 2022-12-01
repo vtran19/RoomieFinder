@@ -25,7 +25,6 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             // Back Button
-            
             Button {
                 self.screen = "start"
             } label: {
@@ -37,6 +36,7 @@ struct SignUpView: View {
                 Text("Back")
                     .frame(maxWidth: UIScreen.main.bounds.size.width * 0.9,
                            maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                    .accentColor(gray)
             }
             
             // Title

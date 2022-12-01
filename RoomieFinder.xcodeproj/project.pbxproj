@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D87DA372931961700893E31 /* PreviewProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D87DA362931961700893E31 /* PreviewProfileView.swift */; };
+		8D9279EF2938FB2E00AA3630 /* AllChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9279EE2938FB2D00AA3630 /* AllChatsView.swift */; };
 		8DCC235629268FC2008C298D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DCC235529268FC1008C298D /* GoogleService-Info.plist */; };
 		F9145AEA291C7BD8009E66CB /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AE9291C7BD8009E66CB /* FirebaseDatabase */; };
 		F9145AEC291C7BD8009E66CB /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F9145AEB291C7BD8009E66CB /* FirebaseDatabaseSwift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		8D87DA362931961700893E31 /* PreviewProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProfileView.swift; sourceTree = "<group>"; };
+		8D9279EE2938FB2D00AA3630 /* AllChatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChatsView.swift; sourceTree = "<group>"; };
 		8DCC235529268FC1008C298D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F9636A082904B07F0015E564 /* RoomieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9636A0B2904B07F0015E564 /* RoomieFinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomieFinderApp.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				8DCC235529268FC1008C298D /* GoogleService-Info.plist */,
 				F9636A0F2904B0810015E564 /* Assets.xcassets */,
 				F9636A112904B0810015E564 /* Preview Content */,
+				8D9279EE2938FB2D00AA3630 /* AllChatsView.swift */,
 			);
 			path = RoomieFinder;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				F9BEAB3B2907079300CC7D32 /* SignUpView.swift in Sources */,
 				F9BEAB37290700CA00CC7D32 /* LoginView.swift in Sources */,
 				F9BEAB3D290707CE00CC7D32 /* StartView.swift in Sources */,
+				8D9279EF2938FB2E00AA3630 /* AllChatsView.swift in Sources */,
 				F9BEAB3F2907085A00CC7D32 /* ChatView.swift in Sources */,
 				F9636A0E2904B07F0015E564 /* ContentView.swift in Sources */,
 				F9636A0C2904B07F0015E564 /* RoomieFinderApp.swift in Sources */,
