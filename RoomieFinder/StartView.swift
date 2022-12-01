@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+
 // Login view screen
 struct StartView: View {
     @Binding var screen: String
     
     var body: some View {
         VStack {
-            Image("logo")
+            Image("roomieLogo")
                  .resizable()
                  .aspectRatio(contentMode: .fill)
                  .frame(width: 250.0, height: 250.0, alignment: .center)
@@ -25,12 +26,12 @@ struct StartView: View {
                 self.screen = "signup"
             }
         }
-        .buttonStyle(BlueButton())
+        .buttonStyle(OrangeButton())
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .accentColor(Color.black)
-        .background(Color("beige"))
+        .accentColor(gray)
+        .background(cream)
     }
 }
 
