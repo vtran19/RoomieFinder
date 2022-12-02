@@ -72,7 +72,7 @@ struct PreviewProfileView: View {
                 Spacer()
                 // 2nd: button to go to chat
                 Button {
-                    self.screen = "chat"
+                    self.screen = "allchats"
                 } label: {
                     Image("chat_icon3")
                         .resizable()
