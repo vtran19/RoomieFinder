@@ -5,15 +5,11 @@
 //  Created by Stephanie Godes on 11/25/22.
 //
 import SwiftUI
+import FirebaseDatabase
 
 struct PreviewProfileView: View {
-    
     @Binding var screen: String
-    
-    @Binding var firstname: String
-    @Binding var lastname: String
-    @Binding var location: String
-    @Binding var bio: String
+    @Binding var theUser: userSetup
     
     var body: some View {
         VStack {
@@ -47,12 +43,17 @@ struct PreviewProfileView: View {
             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
                    maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topLeading)
             .font(.title2)
-            Text("\(firstname) \(lastname)")
+            Text("\(theUser.first) \(theUser.last)")
                 .font(.largeTitle)
-            Text("Location: \(location)")
+            
+            Text("@\(theUser.username)")
                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                 .border(.blue)
-            Text("\(bio)")
+            // TODO: add location to firebase?
+//            Text("Location: ")
+//                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+//                .border(.blue)
+            Text("\(theUser.bio)")
                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                 .border(.pink)
             Spacer()

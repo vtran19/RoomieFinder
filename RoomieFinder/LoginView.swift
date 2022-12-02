@@ -13,6 +13,7 @@ struct LoginView: View {
     
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
+    @Binding var theUser: userSetup
     
     var body: some View {
         VStack {
@@ -44,8 +45,6 @@ struct LoginView: View {
                 // Assign database reference
                 self.ref = Database.database().reference()
                 
-                // Check to make sure user is in database
-
                 // read all users from database
                 ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
                     // set the database users to the optional NSDictionary usersList
@@ -60,7 +59,7 @@ struct LoginView: View {
                         // ** done testing **
                         
                         // call function verify_user to check if user exists
-                        if verify_user(username: username, password: password, usersList: usersList) {
+                        if verify_user(username: username, password: password, usersList: usersList, theUser: &theUser) {
                             // username and password in database -> login
                             print("Logged In");
                             self.screen = "feed"
@@ -93,7 +92,7 @@ struct LoginView: View {
     Function determines whether the username and password pair occurr in the dictionary
     Returns: true or false
 */
-func verify_user (username: String, password: String, usersList: NSDictionary)-> Bool {
+func verify_user (username: String, password: String, usersList: NSDictionary, theUser: inout userSetup)-> Bool {
     // look through usersList to see if the user exists
     var userFound = false
     for (user, userInfo) in usersList {
@@ -110,6 +109,23 @@ func verify_user (username: String, password: String, usersList: NSDictionary)->
                         if password == currPassword {
                             // if password correct, we found our user
                             userFound = true
+                            // make sure all the elements can be unwrapped, then send to function editLocalDictionary
+                            // TODO: add matches
+                            if let first = currInfo["first"] as? String,
+                               let last = currInfo["last"] as? String,
+                               let bio = currInfo["bio"] as? String,
+                               let picture = currInfo["picture"] as? String,
+                               let matches = currInfo["matches"] as? Array<String> {
+                                editLocalDictionary(
+                                    username: username,
+                                    password: password,
+                                    first: first,
+                                    last: last,
+                                    bio: bio,
+                                    picture: picture,
+                                    matches: matches,
+                                    theUser: &theUser)
+                            }
                         }
                     }
                 }

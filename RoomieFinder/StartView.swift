@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 // Login view screen
 struct StartView: View {
     @Binding var screen: String
