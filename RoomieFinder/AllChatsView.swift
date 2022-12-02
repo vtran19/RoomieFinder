@@ -113,7 +113,7 @@ struct AllChatsView: View {
                 Spacer()
                 // 2nd: button to go to chat
                 Button {
-                    self.screen = "chat"
+                    self.screen = "allchats"
                 } label: {
                     Image("chat_icon3")
                         .resizable()
@@ -133,7 +133,10 @@ struct AllChatsView: View {
             }
             // ** end bottom of screen **
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.top)
+        .frame(maxWidth: .infinity,maxHeight: .infinity)
+        .background(cream)
     }
 }
 
