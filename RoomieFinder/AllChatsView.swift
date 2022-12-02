@@ -20,8 +20,6 @@ struct FrameSize {
     var height: Double
 }
 
-let emma = Chat(name: "Emma Parzyck", message: "sup shawty")
-
 let chatframe = FrameSize(width: screenWidth * 0.75, height: screenHeight * 0.1)
 let chatprev = FrameSize(width: screenWidth * 0.4, height: screenHeight * 0.05)
 let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
@@ -29,6 +27,10 @@ let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
 
 struct AllChatsView: View {
     @Binding var screen: String
+    @State var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
+    @State var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
+    @State var sgodes = Chat(name: "Stephanie Godes", message: "yeehaw")
+
     var body: some View {
         VStack {
             // ** start top of screen **
@@ -45,58 +47,10 @@ struct AllChatsView: View {
                 .font(.largeTitle)
                 .bold()
             
+            chatPreview(person: $sgodes)
+            chatPreview(person: $vanessa)
+            chatPreview(person: $emma)
             
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(eggshell)
-                    .frame(width: chatframe.width, height: chatframe.height)
-                Circle()
-                    .foregroundColor(.blue)
-                    .frame(width: chatprof.width,
-                           height: chatprof.height, alignment: .leading)
-                    .offset(x:-100, y:0)
-                Text("\(emma.name)").bold()
-                    .frame(width: chatprev.width, height: chatprev.height, alignment: .leading)
-                    .offset(x:30, y:-20)
-                Text("\(emma.message)")
-                    .frame(width: chatprev.width, height: chatprev.height, alignment: .topLeading)
-                    .offset(x:30, y:20)
-                
-            }
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(eggshell)
-                    .frame(width: chatframe.width, height: chatframe.height)
-                Circle()
-                    .foregroundColor(.pink)
-                    .frame(width: chatprof.width,
-                           height: chatprof.height, alignment: .leading)
-                    .offset(x:-100, y:0)
-                Text("Vanessa Tran").bold()
-                    .frame(width: chatprev.width, height: chatprev.height, alignment: .leading)
-                    .offset(x:30, y:-20)
-                Text("sup shawty")
-                    .frame(width: chatprev.width, height: chatprev.height, alignment: .topLeading)
-                    .offset(x:30, y:20)
-                
-            }
-            ZStack{
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(eggshell)
-                    .frame(width: chatframe.width, height: chatframe.height)
-                Circle()
-                    .foregroundColor(.yellow)
-                    .frame(width: chatprof.width,
-                           height: chatprof.height, alignment: .leading)
-                    .offset(x:-100, y:0)
-                Text("Brianna Alwell").bold()
-                    .frame(width: chatprev.width, height: chatprev.height, alignment: .leading)
-                    .offset(x:30, y:-20)
-                Text("sup shawty")
-                    .frame(width: chatprev.width, height: chatprev.height, alignment: .topLeading)
-                    .offset(x:30, y:20)
-                
-            }
             Spacer()
             
             bottomBar(screen: $screen)
@@ -105,6 +59,29 @@ struct AllChatsView: View {
         .padding(.top)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .background(cream)
+    }
+}
+
+struct chatPreview: View {
+    @Binding var person: Chat
+    var  body: some View{
+        ZStack{
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(eggshell)
+                .frame(width: chatframe.width, height: chatframe.height)
+            Circle()
+                .foregroundColor(.yellow)
+                .frame(width: chatprof.width,
+                       height: chatprof.height, alignment: .leading)
+                .offset(x:-100, y:0)
+            Text("\(person.name)").bold()
+                .frame(width: chatprev.width, height: chatprev.height, alignment: .leading)
+                .offset(x:30, y:-20)
+            Text("\(person.message)")
+                .frame(width: chatprev.width, height: chatprev.height, alignment: .topLeading)
+                .offset(x:30, y:20)
+            
+        }
     }
 }
 
