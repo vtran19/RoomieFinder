@@ -16,6 +16,7 @@ struct FeedView: View {
     @Binding var ref: DatabaseReference!
 
     var body: some View {
+        
         VStack {
             // ** start top of screen **
             HStack (alignment: .bottom){
@@ -47,42 +48,9 @@ struct FeedView: View {
             }
             .buttonStyle(BlueButton())
             Spacer()
-            
-            // ** start bottom of screen **
-            HStack {
-                // 1st: button to go to feed
-                Button{
-                    self.screen = "feed"
-                } label: {
-                    Image("feed_icon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 70.0, height: 70.0, alignment: .center)
-                }
-                Spacer()
-                // 2nd: button to go to chat
-                Button {
-                    self.screen = "allchats"
-                } label: {
-                    Image("chat_icon3")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 70.0, height: 70.0, alignment: .center)
-                }
-                Spacer()
-                // 3rd: button to go to chat
-                Button{
-                    self.screen = "viewprofile"
-                } label: {
-                    Image("profile_icon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 70.0, height: 70.0, alignment: .center)
-                }
-            }
-            // ** end bottom of screen **
-            
+            bottomBar(screen: $screen)
         }
+        
         .padding(.horizontal)
         .padding(.top)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
