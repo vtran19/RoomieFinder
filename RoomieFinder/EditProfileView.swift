@@ -17,26 +17,41 @@ struct EditProfileView: View {
     @Binding var bio: String
     
     var body: some View {
+        // everything on the screen is arranged vertically
         VStack {
-            Button("Preview Profile"){
-                self.screen = "viewprofile"
+            // ** start top of screen **
+            HStack (alignment: .bottom){
+                // in the middle: roomiefinder logo
+                Image("logo_plain_rectangle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 130.0, height: 85.0, alignment: .center)
+                    .clipped()
+                
             }
-            .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
-                   maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
-            .font(.title2)
+            // ** end top of screen **
+            
+            // text boxes to change profile
             Text("Edit Profile")
                 .font(.largeTitle)
+                .foregroundColor(gray)
             TextField("First Name", text: $firstname)
             TextField("Last Name", text: $lastname)
             TextField("Location", text: $location)
             TextField("Bio", text: $bio)
+            Button("Done"){
+                self.screen = "viewprofile"
+            }
+            .buttonStyle(TopIcon())
+            .padding()
             Spacer()
         }
+        // formatting for entire screen
         .textFieldStyle(defaultText())
-        .padding()
-        .padding(.bottom, 20)
+        .padding(.horizontal)
+        .padding(.top)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(Color("beige"))
+        .background(cream)
     }
 }
 

@@ -4,11 +4,7 @@
 //
 //  Created by Stephanie Godes on 11/25/22.
 //
-
-
 import SwiftUI
-
-
 
 struct PreviewProfileView: View {
     
@@ -21,9 +17,33 @@ struct PreviewProfileView: View {
     
     var body: some View {
         VStack {
-            Button("Edit Profile"){
-                self.screen = "editprofile"
+            // ** start top of screen **
+            HStack (alignment: .bottom){
+                // on left: log out button
+                Button("Log Out"){
+                    self.screen = "start"
+                }
+                .buttonStyle(TopIcon())
+                Spacer()
+                // in the middle: roomiefinder logo
+                Image("logo_plain_rectangle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 130.0, height: 85.0, alignment: .center)
+                    .clipped()
+                Spacer()
+                // on the right: button to edit profile
+                Button {
+                    self.screen = "editprofile"
+                } label: {
+                    Label("Edit", systemImage: "pencil")
+                }
+                .buttonStyle(TopIcon())
             }
+            // ** end top of screen **
+            
+            // ** profile preview start **
+            Spacer()
             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
                    maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topLeading)
             .font(.title2)
@@ -36,9 +56,12 @@ struct PreviewProfileView: View {
                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                 .border(.pink)
             Spacer()
+            // ** profile preview end **
+            
+            bottomBar(screen: $screen)
         }
-        .padding()
-        .padding(.bottom, 20)
+        .padding(.horizontal)
+        .padding(.top)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .background(Color("beige"))
     }

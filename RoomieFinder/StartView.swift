@@ -14,7 +14,7 @@ struct StartView: View {
     
     var body: some View {
         VStack {
-            Image("roomieLogo")
+            Image("logo_with_name")
                  .resizable()
                  .aspectRatio(contentMode: .fill)
                  .frame(width: 250.0, height: 250.0, alignment: .center)
@@ -28,7 +28,7 @@ struct StartView: View {
         }
         .buttonStyle(OrangeButton())
         .padding()
-        .padding(.bottom, 20)
+        .padding(.bottom, 60)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .accentColor(gray)
         .background(cream)

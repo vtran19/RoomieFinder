@@ -51,6 +51,9 @@ struct ContentView: View {
         } else if screen == "chat"{
             ChatView(screen: $screen)
         }
+        else if screen == "allchats"{
+            AllChatsView(screen: $screen)
+        }
     }
     
     struct ContentView_Previews: PreviewProvider {
@@ -86,4 +89,73 @@ struct OrangeButton: ButtonStyle {
     }
 }
 
+// button styling
+struct TopIcon: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(cream)
+            .padding(0.2)
+            .frame(width: 80, height: 40)
+            .background(blue)
+            .cornerRadius(7.0)
+        // / button formatting
+        // TODO: fix formatting stuff
+        //.frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
+         //      maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
+       // .font(.title2)
+    }
+}
 
+// button styling
+struct BottomRow: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(cream)
+            .padding(0.2)
+            .frame(width: 80, height: 50)
+            .background(gray)
+            .cornerRadius(7.0)
+    }
+}
+
+
+struct bottomBar: View {
+    @Binding var screen: String
+    var  body: some View{
+        // ** start bottom of screen **
+        HStack {
+            // 1st: button to go to feed
+            Button{
+                self.screen = "feed"
+            } label: {
+                Image("feed_icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 70.0, height: 70.0, alignment: .center)
+            }
+            Spacer()
+            // 2nd: button to go to chat
+            Button {
+                self.screen = "allchats"
+            } label: {
+                Image("chat_icon3")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 70.0, height: 70.0, alignment: .center)
+            }
+            Spacer()
+            // 3rd: button to go to chat
+            Button{
+                self.screen = "viewprofile"
+            } label: {
+                Image("profile_icon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 70.0, height: 70.0, alignment: .center)
+            }
+        }
+        // ** end bottom of screen **
+    }
+}
