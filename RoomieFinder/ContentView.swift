@@ -89,4 +89,35 @@ struct OrangeButton: ButtonStyle {
     }
 }
 
+// button styling
+struct TopIcon: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(cream)
+            .padding(0.2)
+            .frame(width: 80, height: 40)
+            .background(blue)
+            .cornerRadius(7.0)
+        // / button formatting
+        // TODO: fix formatting stuff
+        //.frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
+         //      maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
+       // .font(.title2)
+    }
+}
+
+// button styling
+struct BottomRow: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .foregroundColor(cream)
+            .padding(0.2)
+            .frame(width: 80, height: 50)
+            .background(gray)
+            .cornerRadius(7.0)
+    }
+}
+
 

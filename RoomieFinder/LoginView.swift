@@ -16,9 +16,25 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            Text("Roomie Finder")
-                .font(.largeTitle)
-                .bold()
+            // Back Button
+            Button {
+                self.screen = "start"
+            } label: {
+                Image("back")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.05,
+                           maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
+                Text("Back")
+                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.9,
+                           maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+            }
+            
+            Image("logo_with_name")
+                 .resizable()
+                 .aspectRatio(contentMode: .fill)
+                 .frame(width: 250.0, height: 250.0, alignment: .center)
+                 .clipped()
             TextField("Username", text: $username)
             TextField("Password", text: $password)
                 .padding(.bottom, 20)
@@ -61,13 +77,14 @@ struct LoginView: View {
                 })
             }
             .buttonStyle(OrangeButton())
+            Spacer()
         }
         .textFieldStyle(defaultText())
         .padding()
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .accentColor(gray)
-        .background(eggshell)
+        .background(cream)
     }
 }
 

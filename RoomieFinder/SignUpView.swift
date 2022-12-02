@@ -25,7 +25,6 @@ struct SignUpView: View {
     var body: some View {
         VStack {
             // Back Button
-            
             Button {
                 self.screen = "start"
             } label: {
@@ -41,6 +40,11 @@ struct SignUpView: View {
             
             // Title
             //Spacer()
+            Image("logo_plain_rectangle")
+                 .resizable()
+                 .aspectRatio(contentMode: .fill)
+                 .frame(width: 230.0, height: 150.0, alignment: .center)
+                 .clipped()
             Text("Create an Account")
                 .font(.largeTitle)
                 .bold()
@@ -73,7 +77,7 @@ struct SignUpView: View {
                     
                     // Change screen to user profile
                     self.screen = "editprofile"
-                    }
+                }
                 .buttonStyle(BlueButton())
             } else {
                 
