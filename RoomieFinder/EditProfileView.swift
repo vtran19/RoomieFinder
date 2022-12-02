@@ -17,53 +17,41 @@ struct EditProfileView: View {
     @Binding var bio: String
     
     var body: some View {
-        // everything on the screen arranged vertically
+        // everything on the screen is arranged vertically
         VStack {
-            
-            // buttons at the top of the screen (log out and preview profile) arranged horizontally
-            HStack {
-                Button("Preview Profile"){
-                    self.screen = "viewprofile"
-                }
-                Button("Log Out"){
-                    self.screen = "start"
-                }
-                // button formatting
-                // TODO: fix formatting stuff
-                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
-                       maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
-                .font(.title2)
+            // ** start top of screen **
+            HStack (alignment: .bottom){
+                // in the middle: roomiefinder logo
+                Image("logo_plain_rectangle")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 130.0, height: 85.0, alignment: .center)
+                    .clipped()
+                
             }
+            // ** end top of screen **
             
             // text boxes to change profile
             Text("Edit Profile")
                 .font(.largeTitle)
+                .foregroundColor(gray)
             TextField("First Name", text: $firstname)
             TextField("Last Name", text: $lastname)
             TextField("Location", text: $location)
             TextField("Bio", text: $bio)
-            Spacer()
-            
-            // buttons at the bottom of the screen (feed, messages, profile) arranged horizontally
-            HStack {
-                Button("PROFILE") {
-                    self.screen = "editprofile"
-                }
-                Button("MESSAGES") {
-                    self.screen = "chat"
-                }
-                Button("FEED") {
-                    self.screen = "feed"
-                }
+            Button("Done"){
+                self.screen = "viewprofile"
             }
+            .buttonStyle(TopIcon())
+            .padding()
+            Spacer()
         }
-        
-        // formatting for entire screen maybe?
+        // formatting for entire screen
         .textFieldStyle(defaultText())
-        .padding()
-        .padding(.bottom, 20)
+        .padding(.horizontal)
+        .padding(.top)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(Color("beige"))
+        .background(cream)
     }
 }
 
