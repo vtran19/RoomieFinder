@@ -51,6 +51,9 @@ struct ContentView: View {
         } else if screen == "chat"{
             ChatView(screen: $screen)
         }
+        else if screen == "allchats"{
+            AllChatsView(screen: $screen)
+        }
     }
     
     struct ContentView_Previews: PreviewProvider {
