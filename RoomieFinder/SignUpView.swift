@@ -10,7 +10,6 @@ import FirebaseDatabase
 
 // Sign up view screen
 struct SignUpView: View {
-    
     // Initialize variables
     @State var password: String = ""
     @State var verifying: String = ""
@@ -21,6 +20,7 @@ struct SignUpView: View {
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
     @Binding var username: String
+    @Binding var theUser: userSetup
     
     var body: some View {
         VStack {
@@ -71,16 +71,32 @@ struct SignUpView: View {
                     let last = self.last as NSString
                     let password = self.password as NSString
                     
-                    // Store data into database
+                    // store data into database
                     self.ref.child("users/\(self.username)/").setValue([
-                        "first": first, "last": last, "password": password, "picture": "null", "bio": "null", "matches": "null"])
+                        "first": first,
+                        "last": last,
+                        "password": password,
+                        "picture": "null",
+                        "bio": "* create your bio *",
+                        "matches": "null"])
                     
-                    // Change screen to user profile
-                    self.screen = "editprofile"
+                    // send data to function editLocalDictionary
+                    editLocalDictionary(
+                        username: self.username,
+                        password: self.password,
+                        first: self.first,
+                        last: self.last,
+                        bio: "* create your bio *",
+                        picture: "null",
+                        matches: ["null"],
+                        theUser: &theUser)
+                    
+                    // Change screen to feed
+                    self.screen = "feed"
                 }
                 .buttonStyle(BlueButton())
             } else {
-                
+                // TODO: print something saying passwords dont match
             }
             Spacer()
         }
@@ -89,7 +105,7 @@ struct SignUpView: View {
         .padding(.bottom, 20)
         .frame(maxWidth: .infinity,maxHeight: .infinity)
         .accentColor(Color.black)
-        .background(Color("beige"))
+        .background(cream)
     }
 }
 
