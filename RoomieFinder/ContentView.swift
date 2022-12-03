@@ -22,7 +22,8 @@ struct userSetup {
     var last: String
     var bio: String
     var picture: String
-    var matches: Array<String>
+    // TODO: temp change for it to work
+    var matches: String
 }
 
 // Overall view
@@ -38,18 +39,21 @@ struct ContentView: View {
     @State var username: String = ""
     
     // set up empty user before loggin in
-    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
+    // TODO: change matches back to array
+    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: "null")
+    
+    @State var allUsers: Array<userSetup> = []
     
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
             StartView(screen: $screen)
         } else if screen == "login" {
-            LoginView(screen: $screen, ref: $ref, theUser: $theUser)
+            LoginView(screen: $screen, ref: $ref, theUser: $theUser, allUsers: $allUsers)
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username, theUser: $theUser)
         } else if screen == "feed" {
-            FeedView()
+            FeedView(screen: $screen, allUsers: $allUsers)
         } else if screen == "editprofile"{
             EditProfileView(screen: $screen, ref: $ref, theUser: $theUser)
         } else if screen == "viewprofile" {
@@ -62,11 +66,11 @@ struct ContentView: View {
         }
     }
     
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-    }
+    //struct ContentView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        ContentView()
+    //    }
+    //}
 }
 
 // button styling
@@ -126,7 +130,7 @@ struct BottomRow: ButtonStyle {
     }
 }
 
-func editLocalDictionary(username: String, password: String, first: String, last: String, bio: String, picture: String, matches: Array<String>, theUser: inout userSetup) {
+func editLocalDictionary(username: String, password: String, first: String, last: String, bio: String, picture: String, matches: String, theUser: inout userSetup) {
     // set the user's information
     theUser.username = username
     theUser.password = password
@@ -135,6 +139,7 @@ func editLocalDictionary(username: String, password: String, first: String, last
     theUser.bio = bio
     theUser.picture = picture
     theUser.matches = matches
+}
 
 struct bottomBar: View {
     @Binding var screen: String

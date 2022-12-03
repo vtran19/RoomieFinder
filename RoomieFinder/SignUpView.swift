@@ -88,9 +88,9 @@ struct SignUpView: View {
                         last: self.last,
                         bio: "* create your bio *",
                         picture: "null",
-                        matches: ["null"],
+                        matches: "null",
                         theUser: &theUser)
-                    
+                    //TODO: change matches back to array
                     // Change screen to feed
                     self.screen = "feed"
                 }
