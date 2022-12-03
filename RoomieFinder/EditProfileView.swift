@@ -6,15 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 
 struct EditProfileView: View {
     // Binds showFeed to State in Content View
     @Binding var screen: String
-    
-    @Binding var firstname: String
-    @Binding var lastname: String
-    @Binding var location: String
-    @Binding var bio: String
+    @Binding var ref: DatabaseReference!
+    @Binding var theUser: userSetup
     
     var body: some View {
         // everything on the screen is arranged vertically
@@ -35,11 +33,25 @@ struct EditProfileView: View {
             Text("Edit Profile")
                 .font(.largeTitle)
                 .foregroundColor(gray)
-            TextField("First Name", text: $firstname)
-            TextField("Last Name", text: $lastname)
-            TextField("Location", text: $location)
-            TextField("Bio", text: $bio)
+            TextField("First Name", text: $theUser.first)
+            TextField("Last Name", text: $theUser.last)
+            // TODO: location
+            //TextField("Location", text: "location")
+            TextField("Bio", text: $theUser.bio)
+            
             Button("Done"){
+                // reassign everything to firebase
+                // Assign database reference
+                self.ref = Database.database().reference()
+                
+                // cast data to compatible values for database
+                //let first = theUser.first as NSString
+                //let last = theUser.last as NSString
+                //let bio = theUser.bio as NSString
+                // put info back into firebase
+                // TODO: how to change individual fields in database
+                //self.ref.child("users/\(theUser.username)/").setValue(["first": first, "last": last, "bio": bio])
+                
                 self.screen = "viewprofile"
             }
             .buttonStyle(TopIcon())
