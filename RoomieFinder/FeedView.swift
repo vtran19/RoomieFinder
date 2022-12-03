@@ -8,8 +8,7 @@ import FirebaseDatabase
 struct FeedView: View {
     //var users = Array<userSetup>()
     // States
-    //@State var curr: Int
-    @State var users: Array<String> = []
+    @State var isLoaded: Bool = false
     @State var imageIndex: Int = 0
     @State var ref: DatabaseReference!
     
@@ -33,7 +32,6 @@ struct FeedView: View {
             }
             // ** end top of screen **
             
-            //Spacer()
             if (imageIndex == self.allUsers.count) {
                 Text("There is no one in your area to match with")
             } else {
@@ -41,14 +39,24 @@ struct FeedView: View {
                 .resizable()
             }
             
-            Text("You logged in! This is your feed.")
-                .bold()
-            Button("LIKE") {
-                //TODO: Increment users array by 1, get username, get picture from user, change image
-                self.imageIndex += 1
-                print(self.allUsers.count)
+            if (self.isLoaded == false) {
+                Button("Start Matching!") {
+                    self.ref = Database.database().reference()
+                    
+                    // Read users and info from the database
+                    ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
+                        if let usersList = snapshot.value as? NSDictionary {
+                            // Fill array with data from database
+                            self.allUsers = storeData(users: usersList)
+                        }
+                    });
+                    
+                    print(self.allUsers.count)
+                }
+                .buttonStyle(BlueButton())
             }
-            .buttonStyle(BlueButton())
+            
+            // Bottom of screen
             Spacer()
             bottomBar(screen: $screen)
         }
