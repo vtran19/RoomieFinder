@@ -67,7 +67,7 @@ struct chatPreview: View {
     var  body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(eggshell)
+                .foregroundColor(Color.white)
                 .frame(width: chatframe.width, height: chatframe.height)
             Circle()
                 .foregroundColor(.yellow)

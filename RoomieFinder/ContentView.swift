@@ -39,7 +39,7 @@ struct ContentView: View {
     
     // set up empty user before loggin in
     @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
-    
+
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
