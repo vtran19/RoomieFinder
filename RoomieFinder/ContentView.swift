@@ -114,17 +114,6 @@ struct TopIcon: ButtonStyle {
 }
 
 // button styling
-struct BottomRow: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline)
-            .foregroundColor(cream)
-            .padding(0.2)
-            .frame(width: 80, height: 50)
-            .background(gray)
-            .cornerRadius(7.0)
-    }
-}
 
 func editLocalDictionary(username: String, password: String, first: String, last: String, bio: String, picture: String, matches: Array<String>, theUser: inout userSetup) {
     // set the user's information
@@ -135,7 +124,8 @@ func editLocalDictionary(username: String, password: String, first: String, last
     theUser.bio = bio
     theUser.picture = picture
     theUser.matches = matches
-
+}
+    
 struct bottomBar: View {
     @Binding var screen: String
     var  body: some View{
@@ -170,7 +160,7 @@ struct bottomBar: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 70.0, height: 70.0, alignment: .center)
             }
+            // ** end bottom of screen **
         }
-        // ** end bottom of screen **
     }
 }
