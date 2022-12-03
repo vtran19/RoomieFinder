@@ -14,6 +14,7 @@ struct LoginView: View {
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
     @Binding var theUser: userSetup
+    @Binding var allUsers: Array<userSetup>
     
     var body: some View {
         VStack {
@@ -62,6 +63,7 @@ struct LoginView: View {
                         if verify_user(username: username, password: password, usersList: usersList, theUser: &theUser) {
                             // username and password in database -> login
                             print("Logged In");
+                            self.allUsers = loadImageArray(reference: ref, username: username)
                             self.screen = "feed"
                         } else {
                             // user does not exist, clear username and password and make them re-enter
@@ -114,7 +116,8 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
                                let last = currInfo["last"] as? String,
                                let bio = currInfo["bio"] as? String,
                                let picture = currInfo["picture"] as? String,
-                               let matches = currInfo["matches"] as? Array<String> {
+                               //TODO: Change back to array
+                               let matches = currInfo["matches"] as? String {
                                 editLocalDictionary(
                                     username: username,
                                     password: password,
@@ -137,8 +140,8 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
     return userFound
 }
 
-struct Previews_LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(screen: "login")
-    }
-}
+//struct Previews_LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(screen: "login")
+//    }
+//}

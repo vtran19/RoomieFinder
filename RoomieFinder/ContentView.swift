@@ -22,7 +22,8 @@ struct userSetup {
     var last: String
     var bio: String
     var picture: String
-    var matches: Array<String>
+    // TODO: temp change for it to work
+    var matches: String
 }
 
 // Overall view
@@ -38,18 +39,21 @@ struct ContentView: View {
     @State var username: String = ""
     
     // set up empty user before loggin in
-    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
-
+    // TODO: change matches back to array
+    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: "null")
+    
+    @State var allUsers: Array<userSetup> = []
+    
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
             StartView(screen: $screen)
         } else if screen == "login" {
-            LoginView(screen: $screen, ref: $ref, theUser: $theUser)
+            LoginView(screen: $screen, ref: $ref, theUser: $theUser, allUsers: $allUsers)
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username, theUser: $theUser)
         } else if screen == "feed" {
-            FeedView(screen: $screen, ref: $ref)
+            FeedView(screen: $screen, allUsers: $allUsers)
         } else if screen == "editprofile"{
             EditProfileView(screen: $screen, ref: $ref, theUser: $theUser)
         } else if screen == "viewprofile" {
@@ -125,7 +129,7 @@ func editLocalDictionary(username: String, password: String, first: String, last
     theUser.picture = picture
     theUser.matches = matches
 }
-    
+
 struct bottomBar: View {
     @Binding var screen: String
     var  body: some View{
@@ -160,7 +164,7 @@ struct bottomBar: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 70.0, height: 70.0, alignment: .center)
             }
-            // ** end bottom of screen **
         }
+        // ** end bottom of screen **
     }
 }
