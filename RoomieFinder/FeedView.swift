@@ -8,7 +8,8 @@ import FirebaseDatabase
 struct FeedView: View {
     // States
     //@State var curr: Int
-    @State var users: Array<String>
+    @State var users: Array<String> = []
+    @State var imageIndex: Int
     @State var image: Image? = nil
     @State var ref: DatabaseReference!
     
@@ -19,38 +20,7 @@ struct FeedView: View {
     
     // Constructor
     init() {
-        // Initialize database connection
-        let localRef = Database.database().reference()
-        var list = [String]()
-        var temp = "feed"
-        let currScreen = Binding<String>(get: { temp }, set: { temp = $0})
         
-        // Get users in database
-        localRef.child("users").observeSingleEvent(of: .value, with: { snapshot in
-            if let usersList = snapshot.value as? NSDictionary {
-                //list = usersList as! [String]
-                print("Got users successfully")
-            } else {
-                print("Error getting users")
-            }
-        })
-        
-        // Set the current user to the first user in array
-        print(list)
-        let currUser = list[0]
-        var currPic = ""
-        
-        // Get the picture name from database
-        localRef.child("users").child(currUser).observeSingleEvent(of: .value, with: { snapshot in
-            let value = snapshot.value as? NSDictionary
-            let picture = value?["picture"] as? String ?? ""
-            currPic = picture
-        })
-        
-        self.users = list
-        self.image = Image(currPic)
-        self.ref = localRef
-        self._screen = currScreen
     }
 
     var body: some View {
@@ -96,7 +66,29 @@ struct FeedView: View {
     }
 }
 
-func loadFeed() {
+func loadImageArray(reference: DatabaseReference, username: String) -> Bool {
+    var ref = reference
+    ref = Database.database().reference()
+    
+    var users = Array<(String, String)>()
+    
+    // Read users and info from the database
+    ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
+        if let usersList = snapshot.value as? NSDictionary {
+            // Run through all the users
+            for (user, userInfo) in usersList {
+                if let currUser = user as? String {
+                    // Tunneling to get user image
+                    if let currInfo = userInfo as? NSDictionary {
+                        if let currImage = currInfo["image"] as? String {
+                            // Add user and corresponding image to tuple array
+                            users.append((currUser, currImage))
+                        }
+                    }
+                }
+            }
+        }
+    })
     
 }
 
