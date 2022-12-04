@@ -10,10 +10,10 @@ struct FeedView: View {
     // States
     @State var isLoaded: Bool = false
     @State var imageIndex: Int = 0
+    @State var allUsers: Array<userSetup> = []
     
     // Bindings
     @Binding var screen: String
-    @Binding var allUsers: Array<userSetup>
     @Binding var ref: DatabaseReference!
     @Binding var username: String
     
@@ -60,30 +60,45 @@ struct FeedView: View {
                     
                     // Like button
                     Button("LIKE") {
+                        // Fetch username that user liked
+                        let userMatch = self.allUsers[imageIndex].username
+                        
+                        // Unwrap username from binding to use in path for DB
+                        let userPath = $username.wrappedValue
+                        
+                        // Set match for this profile to true for current user
+                        self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(true)
+                        
+                        // Remove person from allUsers
+                        self.allUsers.remove(at: imageIndex)
+                        
+                        // If imageIndex is less than all users,increment and move to next person
                         if (self.imageIndex < self.allUsers.count) {
                             self.imageIndex += 1
                         }
-                        
-                        // TODO: add username to matches using struct data
-                        // Fetch username that user liked
-                        let userMatch = self.allUsers[imageIndex].username
-                        let userPath = $username.wrappedValue
-                        
-                        // TODO: Firebase
-                        self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(true)
-                        
-                        // Testing
-                        print(self.imageIndex)
-                        // print("user: \(self.allUsers[imageIndex].username)")
                     }
                     .buttonStyle(BlueButton())
                     
                     // Dislike button
                     Button("DISLIKE") {
+                        // Fetch username that user disliked
+                        let userMatch = self.allUsers[imageIndex].username
+                        
+                        // Unwrap username from binding to use in path for DB
+                        let userPath = $username.wrappedValue
+                        
+                        // Set match for this profile to false for current user
+                        self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(false)
+                        
+                        // Remove person from allUsers
+                        self.allUsers.remove(at: imageIndex)
+
+                        // Increment index
                         if (self.imageIndex < self.allUsers.count) {
                             self.imageIndex += 1
                         }
                     }
+                    .buttonStyle(BlueButton())
                 }
                 
             }

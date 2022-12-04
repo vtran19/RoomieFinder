@@ -14,7 +14,6 @@ struct LoginView: View {
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
     @Binding var theUser: userSetup
-    @Binding var allUsers: Array<userSetup>
     @Binding var username: String
     
     var body: some View {

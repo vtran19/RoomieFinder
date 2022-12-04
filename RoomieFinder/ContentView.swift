@@ -40,18 +40,16 @@ struct ContentView: View {
     // set up empty user before loggin in
     @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
     
-    @State var allUsers: Array<userSetup> = []
-    
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
             StartView(screen: $screen)
         } else if screen == "login" {
-            LoginView(screen: $screen, ref: $ref, theUser: $theUser, allUsers: $allUsers, username: $username)
+            LoginView(screen: $screen, ref: $ref, theUser: $theUser, username: $username)
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username, theUser: $theUser)
         } else if screen == "feed" {
-            FeedView(screen: $screen, allUsers: $allUsers, ref: $ref, username: $username)
+            FeedView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "editprofile"{
             EditProfileView(screen: $screen, ref: $ref, theUser: $theUser)
         } else if screen == "viewprofile" {
