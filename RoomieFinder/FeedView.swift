@@ -32,13 +32,7 @@ struct FeedView: View {
             }
             // ** end top of screen **
             
-            if (imageIndex == self.allUsers.count) {
-                Text("There is no one in your area to match with")
-            } else {
-                Image(self.allUsers[imageIndex].picture)
-                .resizable()
-            }
-            
+            // If data is not loaded, show a button to start matching
             if (self.isLoaded == false) {
                 Button("Start Matching!") {
                     self.ref = Database.database().reference()
@@ -52,8 +46,34 @@ struct FeedView: View {
                     });
                     
                     print(self.allUsers.count)
+                    self.isLoaded = true
                 }
                 .buttonStyle(BlueButton())
+            } else {
+                // If current image index equals the amount of users on app, print message to user
+                if (self.imageIndex >= self.allUsers.count) {
+                    Text("There is no one in your area to match with")
+                } else {
+                    // Show images of users on app
+                    Image(self.allUsers[imageIndex].picture)
+                    .resizable()
+                    Button("LIKE") {
+                        if (self.imageIndex < self.allUsers.count) {
+                            self.imageIndex += 1
+                        }
+                        
+                        // TODO: add username to matches using struct data
+                        
+                        // TODO: Firebase
+                            
+                        // Testing
+                        print(self.imageIndex)
+                       // print("user: \(self.allUsers[imageIndex].username)")
+                    }
+                    .buttonStyle(BlueButton())
+                    
+                }
+                
             }
             
             // Bottom of screen
@@ -93,7 +113,7 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
                 if let currPass = currInfo["password"] as? String {
                     pass = currPass
                 }
-                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, bio: bio, picture: "Jaden", matches: matches)
+                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, bio: bio, picture: image, matches: matches)
                 usersData.append(userToAdd)
             }
         }
