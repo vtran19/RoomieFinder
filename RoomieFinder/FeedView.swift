@@ -6,16 +6,16 @@ import SwiftUI
 import FirebaseDatabase
 
 struct FeedView: View {
-    //var users = Array<userSetup>()
+    
     // States
     @State var isLoaded: Bool = false
     @State var imageIndex: Int = 0
-    @State var ref: DatabaseReference!
     
     // Bindings
     @Binding var screen: String
     @Binding var allUsers: Array<userSetup>
-    //@Binding var ref: DatabaseReference!
+    @Binding var ref: DatabaseReference!
+    @Binding var username: String
     
 
     var body: some View {
@@ -56,22 +56,34 @@ struct FeedView: View {
                 } else {
                     // Show images of users on app
                     Image(self.allUsers[imageIndex].picture)
-                    .resizable()
+                        .resizable()
+                    
+                    // Like button
                     Button("LIKE") {
                         if (self.imageIndex < self.allUsers.count) {
                             self.imageIndex += 1
                         }
                         
                         // TODO: add username to matches using struct data
+                        // Fetch username that user liked
+                        let userMatch = self.allUsers[imageIndex].username
+                        let userPath = $username.wrappedValue
                         
                         // TODO: Firebase
-                            
+                        self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(true)
+                        
                         // Testing
                         print(self.imageIndex)
-                       // print("user: \(self.allUsers[imageIndex].username)")
+                        // print("user: \(self.allUsers[imageIndex].username)")
                     }
                     .buttonStyle(BlueButton())
                     
+                    // Dislike button
+                    Button("DISLIKE") {
+                        if (self.imageIndex < self.allUsers.count) {
+                            self.imageIndex += 1
+                        }
+                    }
                 }
                 
             }
@@ -94,7 +106,8 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
         if let currUser = user as? String {
             // Tunneling to get user information
             if let currInfo = userInfo as? NSDictionary {
-                var image = "", bio = "", first = "", last = "", matches = "", pass = ""
+                var image = "", bio = "", first = "", last = "", pass = ""
+                var matches = Array<String>()
                 if let currImage = currInfo["picture"] as? String {
                     image = currImage
                 }
@@ -107,7 +120,7 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
                 if let currLast = currInfo["last"] as? String {
                     last = currLast
                 }
-                if let currMatches = currInfo["matches"] as? String {
+                if let currMatches = currInfo["matches"] as? Array<String> {
                     matches = currMatches
                 }
                 if let currPass = currInfo["password"] as? String {
