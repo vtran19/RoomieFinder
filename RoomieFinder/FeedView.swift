@@ -42,10 +42,24 @@ struct FeedView: View {
                         if let usersList = snapshot.value as? NSDictionary {
                             // Fill array with data from database
                             self.allUsers = storeData(users: usersList)
+                            
+                            // Removes current user of app from list of potential roommates
+                            var userIndex: Int = -1
+                            
+                            for (index, element) in self.allUsers.enumerated() {
+                                if (element.username == self.username) {
+                                    userIndex = index
+                                }
+                            }
+                            
+                            // Only remove if user is found in list
+                            if (userIndex != -1) {
+                                self.allUsers.remove(at: userIndex)
+                            }
                         }
                     });
                     
-                    print(self.allUsers.count)
+                    // Data is loaded
                     self.isLoaded = true
                 }
                 .buttonStyle(BlueButton())
@@ -69,9 +83,6 @@ struct FeedView: View {
                         // Set match for this profile to true for current user
                         self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(true)
                         
-                        // Remove person from allUsers
-                        self.allUsers.remove(at: imageIndex)
-                        
                         // If imageIndex is less than all users,increment and move to next person
                         if (self.imageIndex < self.allUsers.count) {
                             self.imageIndex += 1
@@ -89,9 +100,6 @@ struct FeedView: View {
                         
                         // Set match for this profile to false for current user
                         self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(false)
-                        
-                        // Remove person from allUsers
-                        self.allUsers.remove(at: imageIndex)
 
                         // Increment index
                         if (self.imageIndex < self.allUsers.count) {
@@ -141,7 +149,7 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
                 if let currPass = currInfo["password"] as? String {
                     pass = currPass
                 }
-                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, bio: bio, picture: image, matches: matches)
+                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, bio: bio, picture: "Jaden", matches: matches)
                 usersData.append(userToAdd)
             }
         }
