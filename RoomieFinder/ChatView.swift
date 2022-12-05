@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatView: View {
     @Binding var screen: String
+    @Binding var user2: Chat
     var body: some View {
         VStack {
             // Back Button
@@ -29,19 +30,22 @@ struct ChatView: View {
                 .foregroundColor(.pink)
                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.2,
                        maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .leading)
-            Text("Joe Smith")
+            Text("\(user2.name)")
                 .font(.largeTitle)
                 .bold()
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(eggshell)
-                .overlay(Text("sup shawty"))
+                .foregroundColor(blue)
+                .overlay(Text("\(user2.message)"))
                 .frame(width: UIScreen.main.bounds.size.width * 0.75, height: UIScreen.main.bounds.size.height * 0.1, alignment: .trailing)
                 .offset(x:-30, y:0)
+                .foregroundColor(cream)
+            
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(blue)
+                .foregroundColor(gray)
                 .overlay(Text("sup shawty"))
                 .frame(width: UIScreen.main.bounds.size.width * 0.75, height: UIScreen.main.bounds.size.height * 0.1, alignment: .trailing)
                 .offset(x:30, y:0)
+                .foregroundColor(cream)
             
             Spacer()
         }
