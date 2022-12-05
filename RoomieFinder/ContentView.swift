@@ -14,7 +14,7 @@ let eggshell = Color(red: 255/255.0, green: 247/255.0, blue: 241/255.0)
 let cream = Color(red: 248/255.0, green: 247/255.0, blue: 241/255.0)
 let blue = Color(red: 6/255.0, green: 174/255.0, blue: 213/255.0)
 
-let exampleUser2 = Chat(name:"Jaden Smith", message:"Hey bestie!")
+let exampleUser2 = Chat(username: "jsmitty", name:"Jaden Smith", message:"Hey bestie!")
 
 // this is how the data from firebase is stored locally
 struct userSetup {
