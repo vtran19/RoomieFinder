@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Chat {
+    var username: String
     var name: String
     var message: String
 }
@@ -25,14 +26,18 @@ let chatprev = FrameSize(width: screenWidth * 0.4, height: screenHeight * 0.05)
 let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
 
 
+
 struct AllChatsView: View {
     @Binding var screen: String
     @Binding var user2: Chat
-    @State var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
-    @State var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
-    @State var sgodes = Chat(name: "Stephanie Godes", message: "yeehaw")
+    var emma = Chat(username: "emparz", name: "Emma Parzyck", message: "sup shawty")
+    var vanessa = Chat(username: "vtran", name: "Vanessa Tran", message: "emma sucks lol")
+    var sgodes = Chat(username: "sgodes", name: "Stephanie Godes", message: "yeehaw")
+    
+   
 
     var body: some View {
+        var matches = [emma, vanessa, sgodes]
         VStack {
             // ** start top of screen **
             HStack (alignment: .bottom){
@@ -48,23 +53,13 @@ struct AllChatsView: View {
                 .font(.largeTitle)
                 .bold()
             
-            Button {
-                self.screen = "chat"
-                self.user2 = sgodes
-            } label: {
-                chatPreview(person: $sgodes)
-            }
-            Button {
-                self.screen = "chat"
-                self.user2 = vanessa
-            } label: {
-                chatPreview(person: $vanessa)
-            }
-            Button {
-                self.screen = "chat"
-                self.user2 = emma
-            } label: {
-                chatPreview(person: $emma)
+            ForEach(0..<matches.count, id: \.self) { i in
+                Button {
+                    self.screen = "chat"
+                    self.user2 = matches[i]
+                } label: {
+                    chatPreview(person: matches[i])
+                }
             }
             Spacer()
             
@@ -78,7 +73,7 @@ struct AllChatsView: View {
 }
 
 struct chatPreview: View {
-    @Binding var person: Chat
+    var person: Chat
     var  body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
