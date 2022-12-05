@@ -14,6 +14,8 @@ let eggshell = Color(red: 255/255.0, green: 247/255.0, blue: 241/255.0)
 let cream = Color(red: 248/255.0, green: 247/255.0, blue: 241/255.0)
 let blue = Color(red: 6/255.0, green: 174/255.0, blue: 213/255.0)
 
+let exampleUser2 = Chat(name:"Jaden Smith", message:"Hey bestie!")
+
 // this is how the data from firebase is stored locally
 struct userSetup {
     var username: String
@@ -30,6 +32,8 @@ struct ContentView: View {
     
     // State for what screen to show
     @State var screen = "start"
+    
+    @State var user2: Chat = exampleUser2
     
     // State for database reference
     @State var ref: DatabaseReference!
@@ -57,10 +61,10 @@ struct ContentView: View {
         } else if screen == "viewprofile" {
             PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
-            ChatView(screen: $screen)
+            ChatView(screen: $screen, user2: $user2)
         }
         else if screen == "allchats"{
-            AllChatsView(screen: $screen)
+            AllChatsView(screen: $screen, user2: $user2)
         }
     }
     
