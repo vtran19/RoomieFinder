@@ -40,6 +40,8 @@ struct ContentView: View {
     // set up empty user before loggin in
     @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
     
+    @State var image: UIImage = UIImage(imageLiteralResourceName: "profile")
+    
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
@@ -51,9 +53,9 @@ struct ContentView: View {
         } else if screen == "feed" {
             FeedView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "editprofile"{
-            EditProfileView(screen: $screen, ref: $ref, theUser: $theUser)
+            EditProfileView(screen: $screen, ref: $ref, theUser: $theUser, image: $image)
         } else if screen == "viewprofile" {
-            PreviewProfileView(screen: $screen, theUser: $theUser)
+            PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
             ChatView(screen: $screen)
         }
@@ -114,17 +116,6 @@ struct TopIcon: ButtonStyle {
 }
 
 // button styling
-struct BottomRow: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline)
-            .foregroundColor(cream)
-            .padding(0.2)
-            .frame(width: 80, height: 50)
-            .background(gray)
-            .cornerRadius(7.0)
-    }
-}
 
 func editLocalDictionary(username: String, password: String, first: String, last: String, bio: String, picture: String, matches: Array<String>, theUser: inout userSetup) {
     // set the user's information
@@ -171,7 +162,7 @@ struct bottomBar: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 70.0, height: 70.0, alignment: .center)
             }
+            // ** end bottom of screen **
         }
-        // ** end bottom of screen **
     }
 }

@@ -112,7 +112,6 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
                             // if password correct, we found our user
                             userFound = true
                             // make sure all the elements can be unwrapped, then send to function editLocalDictionary
-                            // TODO: add matches
                             if let first = currInfo["first"] as? String,
                                let last = currInfo["last"] as? String,
                                let bio = currInfo["bio"] as? String,
@@ -127,6 +126,9 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
                                     picture: picture,
                                     matches: matches,
                                     theUser: &theUser)
+                            }
+                            else {
+                                print("could not load user info")
                             }
                         }
                     }

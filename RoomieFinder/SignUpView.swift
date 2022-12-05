@@ -78,7 +78,7 @@ struct SignUpView: View {
                         "password": password,
                         "picture": "null",
                         "bio": "* create your bio *",
-                        "matches": "null"])
+                        "matches": ["null"]])
                     
                     // send data to function editLocalDictionary
                     editLocalDictionary(
