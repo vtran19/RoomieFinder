@@ -40,20 +40,22 @@ struct ContentView: View {
     // set up empty user before loggin in
     @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
     
+    @State var image: UIImage = UIImage(imageLiteralResourceName: "profile")
+    
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
             StartView(screen: $screen)
         } else if screen == "login" {
-            LoginView(screen: $screen, ref: $ref, theUser: $theUser)
+            LoginView(screen: $screen, ref: $ref, theUser: $theUser, username: $username)
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username, theUser: $theUser)
         } else if screen == "feed" {
-            FeedView(screen: $screen, ref: $ref)
+            FeedView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "editprofile"{
-            EditProfileView(screen: $screen, ref: $ref, theUser: $theUser)
+            EditProfileView(screen: $screen, ref: $ref, theUser: $theUser, image: $image)
         } else if screen == "viewprofile" {
-            PreviewProfileView(screen: $screen, theUser: $theUser)
+            PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
             ChatView(screen: $screen)
         }
@@ -62,11 +64,11 @@ struct ContentView: View {
         }
     }
     
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-    }
+    //struct ContentView_Previews: PreviewProvider {
+    //    static var previews: some View {
+    //        ContentView()
+    //    }
+    //}
 }
 
 // button styling
@@ -125,7 +127,7 @@ func editLocalDictionary(username: String, password: String, first: String, last
     theUser.picture = picture
     theUser.matches = matches
 }
-    
+
 struct bottomBar: View {
     @Binding var screen: String
     var  body: some View{

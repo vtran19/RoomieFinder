@@ -14,6 +14,9 @@ struct EditProfileView: View {
     @Binding var ref: DatabaseReference!
     @Binding var theUser: userSetup
     
+    @State private var isShowPhotoLibrary = false
+    @Binding var image: UIImage
+    
     var body: some View {
         // everything on the screen is arranged vertically
         VStack {
@@ -33,39 +36,66 @@ struct EditProfileView: View {
             Text("Edit Profile")
                 .font(.largeTitle)
                 .foregroundColor(gray)
-            TextField("First Name", text: $theUser.first)
-            TextField("Last Name", text: $theUser.last)
-            // TODO: location
-            //TextField("Location", text: "location")
-            TextField("Bio", text: $theUser.bio)
             
-            Button("Done"){
-                // reassign everything to firebase
-                // Assign database reference
-                self.ref = Database.database().reference()
-                
-                // cast data to compatible values for database
-                //let first = theUser.first as NSString
-                //let last = theUser.last as NSString
-                //let bio = theUser.bio as NSString
-                // put info back into firebase
-                // TODO: how to change individual fields in database
-                //self.ref.child("users/\(theUser.username)/").setValue(["first": first, "last": last, "bio": bio])
-                
-                self.screen = "viewprofile"
+            Image(uiImage: self.image)
+                .resizable()
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(width: 130, height: 130)
+            
+            Button(action: {
+                self.isShowPhotoLibrary = true
+            }) {
+                HStack {
+                    Image(systemName: "photo")
+                        .font(.system(size: 20))
+                    
+                    Text("Photo library")
+                        .font(.headline)
+                }
+                .buttonStyle(BlueButton())
             }
-            .buttonStyle(TopIcon())
-            .padding()
-            Spacer()
+        
+        .sheet(isPresented: $isShowPhotoLibrary) {
+            ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
         }
+        
+        
+        TextField("First Name", text: $theUser.first)
+        TextField("Last Name", text: $theUser.last)
+        // TODO: location
+        //TextField("Location", text: "location")
+        TextField("Bio", text: $theUser.bio)
+        
+        Button("Done"){
+            // reassign everything to firebase
+            // Assign database reference
+            self.ref = Database.database().reference()
+            
+            // cast data to compatible values for database
+            //let first = theUser.first as NSString
+            //let last = theUser.last as NSString
+            //let bio = theUser.bio as NSString
+            // put info back into firebase
+            // TODO: how to change individual fields in database
+            //self.ref.child("users/\(theUser.username)/").setValue(["first": first, "last": last, "bio": bio])
+            
+            self.screen = "viewprofile"
+        }
+        .buttonStyle(TopIcon())
+        .padding()
+        Spacer()
+        
+    }
         // formatting for entire screen
-        .textFieldStyle(defaultText())
-        .padding(.horizontal)
-        .padding(.top)
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(cream)
+            .textFieldStyle(defaultText())
+            .padding(.horizontal)
+            .padding(.top)
+            .frame(maxWidth: .infinity,maxHeight: .infinity)
+            .background(cream)
     }
 }
+
 
 struct Previews_ProfileView_Previews: PreviewProvider {
     static var previews: some View {
