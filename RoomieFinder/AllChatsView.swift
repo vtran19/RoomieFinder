@@ -38,7 +38,7 @@ struct AllChatsView: View {
    
 
     var body: some View {
-        var chats = [emma, vanessa, sgodes, bri] // placeholder matches
+        let chats = [emma, vanessa, sgodes, bri] // placeholder matches
         
         // iterate through users, add matches to array
         //var chats = findMatches(users: <#NSDictionary#>, theUser: theUser)
@@ -113,7 +113,7 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
             if let currInfo = userInfo as? NSDictionary {
                 var username = ""
                 var first = "", last = ""
-                var matches = Array<String>()
+                var matches = [String: Bool]()
                 
                 if let currFirst = currInfo["first"] as? String {
                     first = currFirst
@@ -125,10 +125,16 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
                     username = currUser
                 }
                 var person = first + " " + last
-                if let currMatches = currInfo["matches"] as? Array<String> {
-                    matches = currMatches
-                    if(matches.contains(theUser.username) && theUser.matches.contains(username)){
-                        usersData.append(person)
+                // load matches into the dictionary currMatches
+                if let currMatches = currInfo["matches"] as? Dictionary<String, Bool> {
+                    //matches = currMatches
+                    // check if THEIR matches contain YOU and that it's true
+                    if currMatches[theUser.username] != nil && currMatches[theUser.username] == true {
+                        // check if YOUR matches contain THEM and that it's true
+                        if theUser.matches[username] != nil && theUser.matches[username]  == true {
+                            usersData.append(person)
+                            
+                        }
                     }
                 }
             }
