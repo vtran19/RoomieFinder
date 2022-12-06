@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Chat {
+    //var username2: String
     var name: String
     var message: String?
 }

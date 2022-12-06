@@ -69,9 +69,8 @@ struct ContentView: View {
         } else if screen == "viewprofile" {
             PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
-            ChatView(screen: $screen, user2: $user2)
-        }
-        else if screen == "allchats"{
+            ChatView(screen: $screen, ref: $ref, theUser: $theUser, user2: $user2)
+        } else if screen == "allchats"{
             AllChatsView(screen: $screen, theUser: $theUser, user2: $user2)
         }
     }
