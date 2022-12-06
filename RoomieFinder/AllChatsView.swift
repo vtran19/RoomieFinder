@@ -9,7 +9,6 @@ import SwiftUI
 import FirebaseDatabase
 
 struct Chat {
-    //var username2: String
     var name: String
     var message: String?
 }
@@ -25,6 +24,7 @@ struct FrameSize {
 let chatframe = FrameSize(width: screenWidth * 0.75, height: screenHeight * 0.1)
 let chatprev = FrameSize(width: screenWidth * 0.4, height: screenHeight * 0.05)
 let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
+
 
 
 struct AllChatsView: View {
