@@ -25,7 +25,6 @@ let chatprev = FrameSize(width: screenWidth * 0.4, height: screenHeight * 0.05)
 let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
 
 
-
 struct AllChatsView: View {
     @Binding var screen: String
     @Binding var theUser: userSetup
@@ -34,7 +33,6 @@ struct AllChatsView: View {
     var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
     var sgodes = Chat(name: "Stephanie Godes", message: "")
     var bri = Chat(name: "Brianna Alwell", message: "i hate xcode")
-    
    
 
     var body: some View {
@@ -113,7 +111,7 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
             if let currInfo = userInfo as? NSDictionary {
                 var username = ""
                 var first = "", last = ""
-                var matches = Array<String>()
+                var matches = [String: Bool]()
                 
                 if let currFirst = currInfo["first"] as? String {
                     first = currFirst
@@ -125,10 +123,16 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
                     username = currUser
                 }
                 var person = first + " " + last
-                if let currMatches = currInfo["matches"] as? Array<String> {
-                    matches = currMatches
-                    if(matches.contains(theUser.username) && theUser.matches.contains(username)){
-                        usersData.append(person)
+                // load matches into the dictionary currMatches
+                if let currMatches = currInfo["matches"] as? Dictionary<String, Bool> {
+                    //matches = currMatches
+                    // check if THEIR matches contain YOU and that it's true
+                    if currMatches[theUser.username] != nil && currMatches[theUser.username] == true {
+                        // check if YOUR matches contain THEM and that it's true
+                        if theUser.matches[username] != nil && theUser.matches[username]  == true {
+                            // do what you want to do
+                            
+                        }
                     }
                 }
             }
