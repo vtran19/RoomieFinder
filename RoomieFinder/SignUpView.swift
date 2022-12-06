@@ -82,7 +82,7 @@ struct SignUpView: View {
                         "password": password,
                         "locaiton": location,
                         "bio": "* create your bio *",
-                        "picture": "null",
+                        "picture": self.username,
                         "matches": [:]])
                     
                     // send data to function editLocalDictionary
@@ -93,7 +93,7 @@ struct SignUpView: View {
                         last: self.last,
                         location: self.location,
                         bio: "* create your bio *",
-                        picture: "null",
+                        picture: self.username,
                         matches: [:],
                         theUser: &theUser)
                     // Change screen to feed

@@ -183,7 +183,7 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
                 if let currPass = currInfo["password"] as? String {
                     pass = currPass
                 }
-                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, location: location, bio: bio, picture: "Jaden", matches: matches)
+                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, location: location, bio: bio, picture: image, matches: matches)
                 usersData.append(userToAdd)
             }
         }
