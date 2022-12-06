@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
 
 struct Chat {
     var name: String
@@ -27,23 +28,24 @@ let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
 
 
 struct AllChatsView: View {
+    // State for data loading
+    @State var isLoaded: Bool = false
+    @State var chats: Array<Chat> = []
+    @State var matches: Array<String> = []
+    
+    // Binding
     @Binding var screen: String
     @Binding var theUser: userSetup
     @Binding var user2: Chat
+    @Binding var ref: DatabaseReference!
+    
+    // Default chat values
     var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
     var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
     var sgodes = Chat(name: "Stephanie Godes", message: "")
     var bri = Chat(name: "Brianna Alwell", message: "i hate xcode")
     
-   
-
     var body: some View {
-        let chats = [emma, vanessa, sgodes, bri] // placeholder matches
-        
-        // iterate through users, add matches to array
-        //var chats = findMatches(users: <#NSDictionary#>, theUser: theUser)
-        
-        
         VStack {
             // ** start top of screen **
             HStack (alignment: .bottom){
@@ -55,18 +57,47 @@ struct AllChatsView: View {
                     .clipped()
             }
             // ** end top of screen **
-            Text("Chats")
-                .font(.largeTitle)
-                .bold()
-            
-            ForEach(0..<chats.count, id: \.self) { i in
-                Button {
-                    self.screen = "chat"
-                    self.user2 = Chat(name: chats[i].name, message: "hello")
-                } label: {
-                    chatPreview(person: chats[i])
+            if (self.isLoaded) {
+                Text("Chats")
+                    .font(.largeTitle)
+                    .bold()
+                
+                ForEach(0..<chats.count, id: \.self) { i in
+                    Button {
+                        self.screen = "chat"
+                        self.user2 = Chat(name: chats[i].name, message: "hello")
+                    } label: {
+                        chatPreview(person: chats[i])
+                    }
                 }
+            } else {
+                Button("Chat with Matches!") {
+                    self.ref = Database.database().reference()
+                    
+                    // Unwrap binding for current user
+                    let currentUser = $theUser.wrappedValue
+                    print("Curr User Button: \(currentUser)")
+                    
+                    // Read users and info from the database
+                    ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
+                        if let usersList = snapshot.value as? NSDictionary {
+                            // Fill array with data from database
+                            print("Users List: \(usersList)")
+                            self.matches = findMatches(users: usersList, theUser: currentUser)
+                            
+                            for person in self.matches {
+                                let toAdd = Chat(name: person, message: "default")
+                                self.chats.append(toAdd)
+                            }
+                        }
+                    });
+                    
+                    // Data is loaded
+                    self.isLoaded = true
+                }
+                .buttonStyle(OrangeButton())
             }
+            
             Spacer()
             
             bottomBar(screen: $screen)
@@ -111,9 +142,7 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
         if let currUser = user as? String {
             // Tunneling to get user information
             if let currInfo = userInfo as? NSDictionary {
-                var username = ""
                 var first = "", last = ""
-                var matches = [String: Bool]()
                 
                 if let currFirst = currInfo["first"] as? String {
                     first = currFirst
@@ -122,24 +151,30 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
                     last = currLast
                 }
                 
-                var person = first + " " + last
-                
-                
                 // load matches into the dictionary currMatches
                 if let currMatches = currInfo["matches"] as? Dictionary<String, Bool> {
-                    //matches = currMatches
-                    // check if THEIR matches contain YOU and that it's true
-                    if currMatches[theUser.username] != nil && currMatches[theUser.username] == true {
-                        // check if YOUR matches contain THEM and that it's true
-                        if theUser.matches[currUser] != nil && theUser.matches[currUser] == true {
-                            usersData.append(person)
-                            
+                    print("Matches: \(currMatches)")
+                    // loop through user in database's matches to see if it matches user of app
+                    for (matchUser, isMatch) in currMatches {
+                        // find current user of app within database user matches and check if the match is true
+                        print("Curr User: \(theUser.username)")
+                        if matchUser == theUser.username && isMatch == true {
+                            // loop through user of app matches and check if they match with that user
+                            for (matchUserOther, isMatchOther) in theUser.matches {
+                                if matchUserOther == currUser && isMatchOther == true {
+                                    
+                                    // if users both have matches for each other, append to array
+                                    let person = first + " " + last
+                                    usersData.append(person)
+                                }
+                            }
                         }
                     }
                 }
             }
         }
     }
+    print(usersData)
     return usersData
 }
 

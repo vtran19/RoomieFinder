@@ -65,7 +65,7 @@ struct ContentView: View {
             ChatView(screen: $screen, user2: $user2)
         }
         else if screen == "allchats"{
-            AllChatsView(screen: $screen, theUser: $theUser, user2: $user2)
+            AllChatsView(screen: $screen, theUser: $theUser, user2: $user2, ref: $ref)
         }
     }
     
