@@ -18,6 +18,14 @@ struct PreviewProfileView: View {
             HStack (alignment: .bottom){
                 // on left: log out button
                 Button("Log Out"){
+                    self.theUser = userSetup(username: "null",
+                                             password: "null",
+                                             first: "null",
+                                             last: "null",
+                                             location: "null",
+                                             bio: "null",
+                                             picture: "null",
+                                             matches: [:])
                     self.screen = "start"
                 }
                 .buttonStyle(TopIcon())
