@@ -40,6 +40,7 @@ struct AllChatsView: View {
     @Binding var user2: Chat
     @Binding var ref: DatabaseReference!
     @Binding var chatKey: String
+    @Binding var messageArray: Array<(String, String)>
     
     // Default chat values
     var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
@@ -82,6 +83,23 @@ struct AllChatsView: View {
                         
                         // Set binding to usernames key to pass to chat view
                         self.chatKey = usernamesKey
+                        var messageArray: Array<(String, String)> = []
+                        // get all of the chats under this key from firebase and display
+                        ref.child("chats/\(chatKey)").observeSingleEvent(of: .value, with: { snapshot in
+                            if let chats = snapshot.value as? NSDictionary {
+                                // the key is m1, m2, m3
+                                // the chatInfo is name: ""; message: "";
+                                for (_, chatInfo) in chats {
+                                    // verify we can get all the info from the message
+                                    if let currChatInfo = chatInfo as? NSDictionary {
+                                        if let name = currChatInfo["name"] as? String,
+                                            let message = currChatInfo["message"] as? String {
+                                            messageArray.append((name, message))
+                                        }
+                                    }
+                                }
+                            }
+                        })
                         
                         self.screen = "chat"
                         self.user2 = Chat(name: chats[i].name, message: "hello")

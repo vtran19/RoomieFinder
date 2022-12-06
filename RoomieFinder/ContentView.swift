@@ -45,6 +45,9 @@ struct ContentView: View {
     // State for username
     @State var username: String = ""
     
+    // State for username
+    @State var messageArray: Array<(String, String)> = []
+    
     // set up empty user before loggin in
     @State var theUser: userSetup = userSetup(username: "null",
                                               password: "null",
@@ -72,10 +75,10 @@ struct ContentView: View {
         } else if screen == "viewprofile" {
             PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
-            ChatView(screen: $screen, ref: $ref, theUser: $theUser, user2: $user2, chatKey: $chatKey)
+            ChatView(screen: $screen, ref: $ref, theUser: $theUser, user2: $user2, chatKey: $chatKey, messageArray: $messageArray)
         }
         else if screen == "allchats"{
-            AllChatsView(screen: $screen, theUser: $theUser, user2: $user2, ref: $ref, chatKey: $chatKey)
+            AllChatsView(screen: $screen, theUser: $theUser, user2: $user2, ref: $ref, chatKey: $chatKey, messageArray: $messageArray)
         }
     }
     
