@@ -34,6 +34,13 @@ struct FeedView: View {
             
             // If data is not loaded, show a button to start matching
             if (self.isLoaded == false) {
+                Spacer()
+                Text("Welcome to your feed! Click below to start finding roommates")
+                    .font(.system(.largeTitle, design: .rounded).weight(.light))
+                    .tracking(3.5)
+                    .foregroundColor(gray)
+                    .multilineTextAlignment(.center)
+                
                 Button("Start Matching!") {
                     self.ref = Database.database().reference()
                     
@@ -46,6 +53,7 @@ struct FeedView: View {
                             // Removes current user of app from list of potential roommates
                             var userIndex: Int = -1
                             
+                            // Find index of username
                             for (index, element) in self.allUsers.enumerated() {
                                 if (element.username == self.username) {
                                     userIndex = index
@@ -62,7 +70,7 @@ struct FeedView: View {
                     // Data is loaded
                     self.isLoaded = true
                 }
-                .buttonStyle(BlueButton())
+                .buttonStyle(OrangeButton())
             } else {
                 // If current image index equals the amount of users on app, print message to user
                 if (self.imageIndex >= self.allUsers.count) {
@@ -71,42 +79,64 @@ struct FeedView: View {
                     // Show images of users on app
                     Image(self.allUsers[imageIndex].picture)
                         .resizable()
-                    
-                    // Like button
-                    Button("LIKE") {
-                        // Fetch username that user liked
-                        let userMatch = self.allUsers[imageIndex].username
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 370, height: 500)
+                        .cornerRadius(15)
+                        .clipped()
+                        .overlay(
+                            Group {
+                                VStack {
+                                    // Print user bio and name at the bottom left of the screen
+                                    Text("\(self.allUsers[imageIndex].first) \(self.allUsers[imageIndex].last)")
+                                        .font(.title)
+                                        .foregroundColor(.white)
+                                    Text("\(self.allUsers[imageIndex].bio)")
+                                        .font(.subheadline)
+                                        .foregroundColor(.white)
+                                }
+                            },
+                            alignment: .bottomLeading
+                        )
+                    HStack {
                         
-                        // Unwrap username from binding to use in path for DB
-                        let userPath = $username.wrappedValue
                         
-                        // Set match for this profile to true for current user
-                        self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(true)
-                        
-                        // If imageIndex is less than all users,increment and move to next person
-                        if (self.imageIndex < self.allUsers.count) {
-                            self.imageIndex += 1
+                        // Dislike button
+                        Button("DISLIKE") {
+                            // Fetch username that user disliked
+                            let userMatch = self.allUsers[imageIndex].username
+                            
+                            // Unwrap username from binding to use in path for DB
+                            let userPath = $username.wrappedValue
+                            
+                            // Set match for this profile to false for current user
+                            self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(false)
+                            
+                            // Increment index
+                            if (self.imageIndex < self.allUsers.count) {
+                                self.imageIndex += 1
+                            }
                         }
-                    }
-                    .buttonStyle(BlueButton())
-                    
-                    // Dislike button
-                    Button("DISLIKE") {
-                        // Fetch username that user disliked
-                        let userMatch = self.allUsers[imageIndex].username
+                        .buttonStyle(OrangeButton())
                         
-                        // Unwrap username from binding to use in path for DB
-                        let userPath = $username.wrappedValue
-                        
-                        // Set match for this profile to false for current user
-                        self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(false)
-
-                        // Increment index
-                        if (self.imageIndex < self.allUsers.count) {
-                            self.imageIndex += 1
+                        // Like button
+                        Button("LIKE") {
+                            // Fetch username that user liked
+                            let userMatch = self.allUsers[imageIndex].username
+                            
+                            // Unwrap username from binding to use in path for DB
+                            let userPath = $username.wrappedValue
+                            
+                            // Set match for this profile to true for current user
+                            self.ref.child("users/\(userPath)/matches/\(userMatch)").setValue(true)
+                            
+                            // If imageIndex is less than all users,increment and move to next person
+                            if (self.imageIndex < self.allUsers.count) {
+                                self.imageIndex += 1
+                            }
                         }
+                        .buttonStyle(OrangeButton())
+                        
                     }
-                    .buttonStyle(BlueButton())
                 }
                 
             }
@@ -122,6 +152,7 @@ struct FeedView: View {
         .background(cream)
     }
 }
+
 func storeData(users: NSDictionary) -> Array<userSetup> {
     var usersData = Array<userSetup>()
     
@@ -152,7 +183,7 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
                 if let currPass = currInfo["password"] as? String {
                     pass = currPass
                 }
-                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, location: location, bio: bio, picture: "Jaden", matches: matches)
+                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, location: location, bio: bio, picture: image, matches: matches)
                 usersData.append(userToAdd)
             }
         }
@@ -161,25 +192,8 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
     return usersData
 }
 
-func loadImageArray(reference: DatabaseReference, username: String) -> Array<userSetup> {
-    var ref = reference
-    ref = Database.database().reference()
-    
-    var users = Array<userSetup>()
-    
-    // Read users and info from the database
-    ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
-        if let usersList = snapshot.value as? NSDictionary {
-            // Run through all the users
-            users = storeData(users: usersList)
-        }
-    });
-    print(users)
-    return users
+struct Previews_FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "feed")
+    }
 }
-
-//struct Previews_FeedView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(screen: "feed")
-//    }
-//}

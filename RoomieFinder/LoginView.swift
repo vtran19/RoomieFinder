@@ -9,6 +9,7 @@ struct LoginView: View {
     @State var usernameLogIn: String = ""
     @State var password: String = ""
     @State var usernames: Array<String> = []
+    @State var errorMsg: String = ""
     
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
@@ -59,20 +60,26 @@ struct LoginView: View {
                         // call function verify_user to check if user exists
                         if verify_user(username: usernameLogIn, password: password, usersList: usersList, theUser: &theUser) {
                             // username and password in database -> login
+                            print("Logged In")
                             self.username = usernameLogIn
                             self.screen = "feed"
-                        } else {
+                        }
+                        else {
                             // user does not exist, clear username and password and make them re-enter
                             // TODO: show message saying "user does not exist"
-                            username = ""
+                            errorMsg = "User does not exist. Please double-check your login information and try again."
+                            print("User does not exist")
+                            usernameLogIn = ""
                             password = ""
                         }
-                    } else {
-                        print("Error getting users")
+                    }
+                    else {
+                        errorMsg = "Error retrieving users from database"
                     }
                 })
             }
             .buttonStyle(OrangeButton())
+            Text("\(errorMsg)")
             Spacer()
         }
         .textFieldStyle(defaultText())
@@ -134,8 +141,9 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
     return userFound
 }
 
-//struct Previews_LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(screen: "login")
-//    }
-//}
+struct Previews_LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(screen: "login")
+    }
+}
+
