@@ -15,6 +15,7 @@ struct SignUpView: View {
     @State var verifying: String = ""
     @State var first: String = ""
     @State var last: String = ""
+    @State var location: String = ""
     
     // Bindings for variable passing
     @Binding var screen: String
@@ -55,13 +56,15 @@ struct SignUpView: View {
                 TextField("First Name", text: $first)
                 // Last Name
                 TextField("Last Name", text: $last)
+                // Location text field
+                TextField("Location", text: $location)
                 // Password text field
                 TextField("Create Password", text: $password)
                 // Verify password text field
                 TextField("Verify Password", text: $verifying)
             
             // If passwords match, store data into database
-            if verify_pass(pass: password, verify: verifying) && username != "" && first != "" && last != ""{
+            if verify_pass(pass: password, verify: verifying) && username != "" && first != "" && last != "" && location != ""{
                 Button("SIGN UP") {
                     // Assign database reference
                     self.ref = Database.database().reference()
@@ -70,15 +73,17 @@ struct SignUpView: View {
                     let first = self.first as NSString
                     let last = self.last as NSString
                     let password = self.password as NSString
+                    let location = self.location as NSString
                     
                     // store data into database
                     self.ref.child("users/\(self.username)/").setValue([
                         "first": first,
                         "last": last,
                         "password": password,
-                        "picture": "null",
+                        "locaiton": location,
                         "bio": "* create your bio *",
-                        "matches": ["null"]])
+                        "picture": "null",
+                        "matches": [:]])
                     
                     // send data to function editLocalDictionary
                     editLocalDictionary(
@@ -86,9 +91,10 @@ struct SignUpView: View {
                         password: self.password,
                         first: self.first,
                         last: self.last,
+                        location: self.location,
                         bio: "* create your bio *",
                         picture: "null",
-                        matches: [],
+                        matches: [:],
                         theUser: &theUser)
                     // Change screen to feed
                     self.screen = "feed"
@@ -97,7 +103,7 @@ struct SignUpView: View {
             } else {
                 // TODO: print something saying passwords dont match
             }
-            Spacer()
+            //Spacer()
         }
         .textFieldStyle(defaultText())
         .padding()

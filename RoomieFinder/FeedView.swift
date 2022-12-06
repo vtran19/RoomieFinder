@@ -129,13 +129,16 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
         if let currUser = user as? String {
             // Tunneling to get user information
             if let currInfo = userInfo as? NSDictionary {
-                var image = "", bio = "", first = "", last = "", pass = ""
-                var matches = Array<String>()
+                var image = "", bio = "", location = "", first = "", last = "", pass = ""
+                var matches = [String: Bool]()
                 if let currImage = currInfo["picture"] as? String {
                     image = currImage
                 }
                 if let currBio = currInfo["bio"] as? String {
                     bio = currBio
+                }
+                if let currLoc = currInfo["location"] as? String {
+                    location = currLoc
                 }
                 if let currFirst = currInfo["first"] as? String {
                     first = currFirst
@@ -143,13 +146,13 @@ func storeData(users: NSDictionary) -> Array<userSetup> {
                 if let currLast = currInfo["last"] as? String {
                     last = currLast
                 }
-                if let currMatches = currInfo["matches"] as? Array<String> {
+                if let currMatches = currInfo["matches"] as? Dictionary<String, Bool> {
                     matches = currMatches
                 }
                 if let currPass = currInfo["password"] as? String {
                     pass = currPass
                 }
-                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, bio: bio, picture: "Jaden", matches: matches)
+                let userToAdd = userSetup(username: currUser, password: pass, first: first, last: last, location: location, bio: bio, picture: "Jaden", matches: matches)
                 usersData.append(userToAdd)
             }
         }

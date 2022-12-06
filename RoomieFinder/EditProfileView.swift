@@ -63,8 +63,7 @@ struct EditProfileView: View {
         
         TextField("First Name", text: $theUser.first)
         TextField("Last Name", text: $theUser.last)
-        // TODO: location
-        //TextField("Location", text: "location")
+        TextField("College", text: $theUser.location)
         TextField("Bio", text: $theUser.bio)
         
         Button("Done"){
@@ -73,12 +72,16 @@ struct EditProfileView: View {
             self.ref = Database.database().reference()
             
             // cast data to compatible values for database
-            //let first = theUser.first as NSString
-            //let last = theUser.last as NSString
-            //let bio = theUser.bio as NSString
+            let first = theUser.first as NSString
+            let last = theUser.last as NSString
+            let location = theUser.location as NSString
+            let bio = theUser.bio as NSString
             // put info back into firebase
             // TODO: how to change individual fields in database
-            //self.ref.child("users/\(theUser.username)/").setValue(["first": first, "last": last, "bio": bio])
+            self.ref.child("users/\(theUser.username)/first").setValue(first)
+            self.ref.child("users/\(theUser.username)/last").setValue(last)
+            self.ref.child("users/\(theUser.username)/location").setValue(location)
+            self.ref.child("users/\(theUser.username)/bio").setValue(bio)
             
             self.screen = "viewprofile"
         }

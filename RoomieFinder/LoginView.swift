@@ -114,14 +114,16 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
                             // make sure all the elements can be unwrapped, then send to function editLocalDictionary
                             if let first = currInfo["first"] as? String,
                                let last = currInfo["last"] as? String,
+                               let location = currInfo["location"] as? String,
                                let bio = currInfo["bio"] as? String,
                                let picture = currInfo["picture"] as? String,
-                               let matches = currInfo["matches"] as? Array<String> {
+                               let matches = currInfo["matches"] as? Dictionary<String, Bool> {
                                 editLocalDictionary(
                                     username: username,
                                     password: password,
                                     first: first,
                                     last: last,
+                                    location: location,
                                     bio: bio,
                                     picture: picture,
                                     matches: matches,
