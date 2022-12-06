@@ -57,10 +57,9 @@ struct PreviewProfileView: View {
             Text("@\(theUser.username)")
                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                 .border(.blue)
-            // TODO: add location to firebase?
-//            Text("Location: ")
-//                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
-//                .border(.blue)
+            Text("\(theUser.location)")
+                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                .border(.blue)
             Text("\(theUser.bio)")
                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                 .border(.pink)
