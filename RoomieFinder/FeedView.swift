@@ -88,19 +88,22 @@ struct FeedView: View {
                                 VStack {
                                     // Print user bio and name at the bottom left of the screen
                                     Text("\(self.allUsers[imageIndex].first) \(self.allUsers[imageIndex].last)")
+                                        .padding(20)
                                         .font(.title)
                                         .foregroundColor(.white)
-                                    Text("Location: \(self.allUsers[imageIndex].location)")
-                                    Text("Bio: \(self.allUsers[imageIndex].bio)")
+                                        .background(.black.opacity(0.5))
+                                        .cornerRadius(10)
+                                    Text("Location: \(self.allUsers[imageIndex].location)\nBio: \(self.allUsers[imageIndex].bio)")
+                                        .padding(20)
                                         .font(.subheadline)
                                         .foregroundColor(.white)
+                                        .background(.black.opacity(0.5))
+                                        .cornerRadius(10)
                                 }
                             },
                             alignment: .bottomLeading
                         )
                     HStack {
-                        
-                        
                         // Dislike button
                         Button("DISLIKE") {
                             // Fetch username that user disliked
