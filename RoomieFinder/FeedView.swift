@@ -90,7 +90,8 @@ struct FeedView: View {
                                     Text("\(self.allUsers[imageIndex].first) \(self.allUsers[imageIndex].last)")
                                         .font(.title)
                                         .foregroundColor(.white)
-                                    Text("\(self.allUsers[imageIndex].bio)")
+                                    Text("Location: \(self.allUsers[imageIndex].location)")
+                                    Text("Bio: \(self.allUsers[imageIndex].bio)")
                                         .font(.subheadline)
                                         .foregroundColor(.white)
                                 }
