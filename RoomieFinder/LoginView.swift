@@ -69,9 +69,7 @@ struct LoginView: View {
                         }
                         else {
                             // user does not exist, clear username and password and make them re-enter
-                            // TODO: show message saying "user does not exist"
                             errorMsg = "User does not exist. Please double-check your login information and try again."
-                            print("User does not exist")
                             usernameLogIn = ""
                             password = ""
                         }

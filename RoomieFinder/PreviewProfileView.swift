@@ -40,29 +40,39 @@ struct PreviewProfileView: View {
             // ** end top of screen **
             
             // ** profile preview start **
-            Spacer()
-            .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
-                   maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topLeading)
-            .font(.title2)
             
+            
+            .padding(.bottom, 25.0)
             Image(uiImage: self.image)
                 .resizable()
                 .scaledToFill()
-                .clipShape(Circle())
                 .frame(width: 130, height: 130)
+                .clipShape(Circle())
+                
+            Text("@\(theUser.username)")
+                .font(.largeTitle)
+                
             
             Text("\(theUser.first) \(theUser.last)")
-                .font(.largeTitle)
+                .font(.system(size: 20))
+                .padding(20)
+                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                .background(orange.opacity(0.75))
+                .cornerRadius(10)
             
-            Text("@\(theUser.username)")
-                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
-                .border(.blue)
             Text("\(theUser.location)")
-                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
-                .border(.blue)
+                .font(.system(size: 20))
+                .padding(18)
+                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, minHeight: UIScreen.main.bounds.size.height * 0.05,  alignment: .leading)
+                .background(orange.opacity(0.75))
+                .cornerRadius(10)
             Text("\(theUser.bio)")
-                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
-                .border(.pink)
+                .font(.system(size: 20))
+                .padding(20)
+                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                .background(orange.opacity(0.75))
+                .cornerRadius(10)
+                
             Spacer()
             // ** profile preview end **
             

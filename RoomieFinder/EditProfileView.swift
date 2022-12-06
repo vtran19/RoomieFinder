@@ -77,7 +77,6 @@ struct EditProfileView: View {
             let location = theUser.location as NSString
             let bio = theUser.bio as NSString
             // put info back into firebase
-            // TODO: how to change individual fields in database
             self.ref.child("users/\(theUser.username)/first").setValue(first)
             self.ref.child("users/\(theUser.username)/last").setValue(last)
             self.ref.child("users/\(theUser.username)/location").setValue(location)
