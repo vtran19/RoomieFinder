@@ -22,9 +22,10 @@ struct userSetup {
     var password: String
     var first: String
     var last: String
+    var location: String
     var bio: String
     var picture: String
-    var matches: Array<String>
+    var matches: Dictionary<String, Bool>
 }
 
 // Overall view
@@ -42,7 +43,7 @@ struct ContentView: View {
     @State var username: String = ""
     
     // set up empty user before loggin in
-    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
+    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", location: "null", bio: "null", picture: "null", matches: [:])
     
     @State var image: UIImage = UIImage(imageLiteralResourceName: "profile")
     
@@ -121,12 +122,13 @@ struct TopIcon: ButtonStyle {
 
 // button styling
 
-func editLocalDictionary(username: String, password: String, first: String, last: String, bio: String, picture: String, matches: Array<String>, theUser: inout userSetup) {
+func editLocalDictionary(username: String, password: String, first: String, last: String, location: String, bio: String, picture: String, matches: Dictionary<String, Bool>, theUser: inout userSetup) {
     // set the user's information
     theUser.username = username
     theUser.password = password
     theUser.first = first
     theUser.last = last
+    theUser.location = location
     theUser.bio = bio
     theUser.picture = picture
     theUser.matches = matches
