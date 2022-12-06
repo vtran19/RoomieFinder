@@ -100,7 +100,7 @@ struct AllChatsView: View {
                                 }
                             }
                         })
-                        
+                        self.messageArray = messageArray
                         self.screen = "chat"
                         self.user2 = Chat(name: chats[i].name, message: "hello")
                     } label: {
