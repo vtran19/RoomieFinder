@@ -49,8 +49,8 @@ struct ChatView: View {
             
             ScrollView {
                 VStack{
-                    recievedChatbubble()
-                    sentChatbubble()
+                    recievedChatbubble(message: "hello world")
+                    sentChatbubble(message: "sup")
                     sentChatbubble()
                     recievedChatbubble()
                 }
@@ -86,10 +86,11 @@ struct ChatView: View {
 }
 
 struct recievedChatbubble: View{
+    var message: String = ""
     var  body: some View{
         RoundedRectangle(cornerRadius: 10)
             .foregroundColor(gray.opacity(0.25))
-            .overlay(Text("hello world"))
+            .overlay(Text("\(message)"))
             .foregroundColor(.black)
             .frame(maxWidth:UIScreen.main.bounds.size.width * 0.6, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
             .offset(x:-30, y:0)
@@ -97,10 +98,11 @@ struct recievedChatbubble: View{
 }
 
 struct sentChatbubble: View{
+    var message: String = ""
     var  body: some View{
         RoundedRectangle(cornerRadius: 10)
             .foregroundColor(orange.opacity(0.25))
-            .overlay(Text("hello world"))
+            .overlay(Text("\(message)"))
             .foregroundColor(.black)
             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.6, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
             .offset(x:30, y:0)
