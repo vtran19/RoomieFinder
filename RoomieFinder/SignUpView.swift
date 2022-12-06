@@ -2,8 +2,6 @@
 //  SignUpView.swift
 //  RoomieFinder
 //
-//  Created by user228000 on 10/24/22.
-//
 
 import SwiftUI
 import FirebaseDatabase
@@ -39,32 +37,33 @@ struct SignUpView: View {
                            maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
             }
             
-            // Title
-            //Spacer()
+            // display the app logo
             Image("logo_plain_rectangle")
                  .resizable()
                  .aspectRatio(contentMode: .fill)
                  .frame(width: 230.0, height: 150.0, alignment: .center)
                  .clipped()
-            Text("Create an Account")
-                .font(.largeTitle)
-                .bold()
+                 .padding()
+            //Text("Create an Account")
+             //   .font(.largeTitle)
+             //   .bold()
             
-                // Username text field
-                TextField("Create Username", text: $username)
-                // First Name
-                TextField("First Name", text: $first)
-                // Last Name
-                TextField("Last Name", text: $last)
-                // Location text field
-                TextField("Location", text: $location)
-                // Password text field
-                TextField("Create Password", text: $password)
-                // Verify password text field
-                TextField("Verify Password", text: $verifying)
+            // Username text field
+            TextField("Create Username", text: $username)
+            // First Name
+            TextField("First Name", text: $first)
+            // Last Name
+            TextField("Last Name", text: $last)
+            // Location text field
+            TextField("Location", text: $location)
+            // Password text field
+            TextField("Create Password", text: $password)
+            // Verify password text field
+            TextField("Verify Password", text: $verifying)
             
-            // If passwords match, store data into database
-            if verify_pass(pass: password, verify: verifying) && username != "" && first != "" && last != "" && location != ""{
+            // If passwords match, show button
+            if verify_pass(pass: password, verify: verifying) && username != "" && first != "" && last != "" && location != "" {
+                // button stores data into database and lets you into the app
                 Button("SIGN UP") {
                     // Assign database reference
                     self.ref = Database.database().reference()
@@ -80,7 +79,7 @@ struct SignUpView: View {
                         "first": first,
                         "last": last,
                         "password": password,
-                        "locaiton": location,
+                        "location": location,
                         "bio": "* create your bio *",
                         "picture": self.username,
                         "matches": [:]])
@@ -96,15 +95,15 @@ struct SignUpView: View {
                         picture: self.username,
                         matches: [:],
                         theUser: &theUser)
+                    
                     // Change screen to feed
                     self.screen = "feed"
                 }
                 .buttonStyle(BlueButton())
-            } else {
-                // TODO: print something saying passwords dont match
             }
-            //Spacer()
+            Spacer()
         }
+        // background style stuff
         .textFieldStyle(defaultText())
         .padding()
         .padding(.bottom, 20)
@@ -114,20 +113,14 @@ struct SignUpView: View {
     }
 }
 
-/**
-    Checks if passwords two user-inputed passwords match
-    - Parameters:
-        - pass: first password
-        - verify: second password
-    - Returns boolean for if the strings match
- */
+// Checks if passwords two user-inputed passwords match
+// parameters: pass: first password, verify: second password
+// returns boolean for if the strings match
 func verify_pass (pass: String, verify: String)-> Bool {
     // TODO: create minimum criteria for password and validate here
     if pass == verify && pass != "" {
-        //print("passwords match")
         return true
     } else {
-        //print("passwords do not match")
         return false
     }
 }
