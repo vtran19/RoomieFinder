@@ -14,6 +14,7 @@ struct ChatView: View {
     @Binding var theUser: userSetup
     @Binding var user2: Chat
     @Binding var chatKey: String
+    @Binding var messageArray: Array<(String, String)>
     
     @State var message: String = "Message"
     
@@ -21,6 +22,7 @@ struct ChatView: View {
         VStack {
             // Back Button
             Button {
+                self.messageArray = []
                 self.screen = "allchats"
             } label: {
                 Image("back")
@@ -41,12 +43,6 @@ struct ChatView: View {
                 .font(.largeTitle)
                 .bold()
             
-            // get the chat from firebase
-            // Assign database reference
-            // self.ref = Database.database().reference()
-            //convos = get_chats(theUser.username, user2.username2, allChats: NSDictionary)
-            
-            
             ScrollView {
                 VStack{
                     recievedChatbubble(message: "hello world")
@@ -64,7 +60,10 @@ struct ChatView: View {
                     .frame(maxWidth: UIScreen.main.bounds.size.width * 0.7, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                     .background(gray.opacity(0.25))
                     .cornerRadius(10)
-                Button("Send"){}
+                Button("Send") {
+                    // TODO: sending messages
+                    // TODO: every time we send, re-call the screen
+                }
                     .padding(20)
                     .frame(minWidth: UIScreen.main.bounds.size.width * 0.15, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                     .background(blue.opacity(0.75))
@@ -72,14 +71,6 @@ struct ChatView: View {
                     .cornerRadius(10)
             }
             Spacer()
-//            Button("send") {
-//                // add your message
-//                guard let key = ref.child("chats").childByAutoId().key else { return }
-//                //let chat = ["message": body]
-//                //let childUpdates = ["/posts/\(key)": post,
-//                //"/user-posts/\(userID)/\(key)/": post]
-//
-//            }
         }
         .background(cream)
     }
@@ -107,33 +98,6 @@ struct sentChatbubble: View{
             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.6, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
             .offset(x:30, y:0)
     }
-}
-
-//func get_chats(username: String, username2: String, allChats: NSDictionary)-> NSDictionary {
-//    // create an array and sort it alphabetically
-//    var alphabetical = [username, username2]
-//    alphabetical = alphabetical.sorted { (u1, u2) -> Bool in
-//        return (u1.localizedCaseInsensitiveCompare(u2) == .orderedAscending)
-//    }
-//    // the key for messages is the alphabetical usernames concatinated
-//    let usernamesKey = username + username2
-//    
-//    // chatInfo has a list of messages within which are a name, messageText, and timestamp
-//    for (key, chatInfo) in allChats {
-//        // try to create optional String currKey from key
-//        if let currKey = key as? String {
-//            // see if it matches the key we just made
-//            if currKey == usernamesKey {
-//                let conversation = chatInfo as? NSDictionary
-//            }
-//        }
-//    }
-//}
-    
-struct Message {
-    let name: String
-    let text: String
-    let timestamp: Float
 }
 
 struct Previews_ChatView_Previews: PreviewProvider {
