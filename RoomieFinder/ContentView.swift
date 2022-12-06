@@ -14,6 +14,8 @@ let eggshell = Color(red: 255/255.0, green: 247/255.0, blue: 241/255.0)
 let cream = Color(red: 248/255.0, green: 247/255.0, blue: 241/255.0)
 let blue = Color(red: 6/255.0, green: 174/255.0, blue: 213/255.0)
 
+let exampleUser2 = Chat(username: "jsmitty", name:"Jaden Smith", message:"Hey bestie!")
+
 // this is how the data from firebase is stored locally
 struct userSetup {
     var username: String
@@ -22,8 +24,7 @@ struct userSetup {
     var last: String
     var bio: String
     var picture: String
-    // TODO: temp change for it to work
-    var matches: String
+    var matches: Array<String>
 }
 
 // Overall view
@@ -32,6 +33,8 @@ struct ContentView: View {
     // State for what screen to show
     @State var screen = "start"
     
+    @State var user2: Chat = exampleUser2
+    
     // State for database reference
     @State var ref: DatabaseReference!
     
@@ -39,30 +42,29 @@ struct ContentView: View {
     @State var username: String = ""
     
     // set up empty user before loggin in
-    // TODO: change matches back to array
-    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: "null")
+    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", bio: "null", picture: "null", matches: ["null"])
     
-    @State var allUsers: Array<userSetup> = []
+    @State var image: UIImage = UIImage(imageLiteralResourceName: "profile")
     
     var body: some View {
         // Shows screen according to boolean showFeed
         if screen == "start" {
             StartView(screen: $screen)
         } else if screen == "login" {
-            LoginView(screen: $screen, ref: $ref, theUser: $theUser, allUsers: $allUsers)
+            LoginView(screen: $screen, ref: $ref, theUser: $theUser, username: $username)
         } else if screen == "signup" {
             SignUpView(screen: $screen, ref: $ref, username: $username, theUser: $theUser)
         } else if screen == "feed" {
-            FeedView(screen: $screen, allUsers: $allUsers)
+            FeedView(screen: $screen, ref: $ref, username: $username)
         } else if screen == "editprofile"{
-            EditProfileView(screen: $screen, ref: $ref, theUser: $theUser)
+            EditProfileView(screen: $screen, ref: $ref, theUser: $theUser, image: $image)
         } else if screen == "viewprofile" {
-            PreviewProfileView(screen: $screen, theUser: $theUser)
+            PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
-            ChatView(screen: $screen)
+            ChatView(screen: $screen, user2: $user2)
         }
         else if screen == "allchats"{
-            AllChatsView(screen: $screen)
+            AllChatsView(screen: $screen, user2: $user2)
         }
     }
     

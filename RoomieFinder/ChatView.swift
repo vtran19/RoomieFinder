@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ChatView: View {
     @Binding var screen: String
+    @Binding var user2: Chat
+    @State var message: String = "Message"
     var body: some View {
         VStack {
             // Back Button
@@ -18,34 +20,47 @@ struct ChatView: View {
                 Image("back")
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.05,
-                           maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.05,
+                           height: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
                 Text("Back")
-                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.9,
-                           maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.9,
+                           height: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
                     .accentColor(gray)
             }
             Circle()
                 .foregroundColor(.pink)
-                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.2,
-                       maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .leading)
-            Text("Joe Smith")
+                .frame(height: UIScreen.main.bounds.size.height * 0.1, alignment: .leading)
+            Text("\(user2.name)")
                 .font(.largeTitle)
                 .bold()
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(eggshell)
-                .overlay(Text("sup shawty"))
-                .frame(width: UIScreen.main.bounds.size.width * 0.75, height: UIScreen.main.bounds.size.height * 0.1, alignment: .trailing)
-                .offset(x:-30, y:0)
-            RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(blue)
-                .overlay(Text("sup shawty"))
-                .frame(width: UIScreen.main.bounds.size.width * 0.75, height: UIScreen.main.bounds.size.height * 0.1, alignment: .trailing)
-                .offset(x:30, y:0)
             
+            ScrollView {
+                VStack{
+                    ForEach(0..<3) {_ in
+                        chatbubble()
+                    }
+                }
+                .frame(width: UIScreen.main.bounds.size.width * 0.8)
+            }
+            .frame(maxHeight: 400)
+            .border(pink)
+            TextField("Message", text: $message)
+                .textFieldStyle(defaultText())
+                .border(blue)
             Spacer()
         }
-        .padding()
+        .background(cream)
+    }
+}
+
+struct chatbubble: View{
+    var  body: some View{
+        RoundedRectangle(cornerRadius: 20)
+            .foregroundColor(gray)
+            .overlay(Text("hello world"))
+            .foregroundColor(cream)
+            .frame(width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.1, alignment: .trailing)
+            .offset(x:30, y:0)
     }
 }
 

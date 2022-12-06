@@ -7,14 +7,14 @@ import FirebaseDatabase
 
 // Login view screen
 struct LoginView: View {
-    @State var username: String = ""
+    @State var usernameLogIn: String = ""
     @State var password: String = ""
     @State var usernames: Array<String> = []
     
     @Binding var screen: String
     @Binding var ref: DatabaseReference!
     @Binding var theUser: userSetup
-    @Binding var allUsers: Array<userSetup>
+    @Binding var username: String
     
     var body: some View {
         VStack {
@@ -37,7 +37,7 @@ struct LoginView: View {
                  .aspectRatio(contentMode: .fill)
                  .frame(width: 250.0, height: 250.0, alignment: .center)
                  .clipped()
-            TextField("Username", text: $username)
+            TextField("Username", text: $usernameLogIn)
             TextField("Password", text: $password)
                 .padding(.bottom, 20)
             Button("LOG IN") {
@@ -60,10 +60,10 @@ struct LoginView: View {
                         // ** done testing **
                         
                         // call function verify_user to check if user exists
-                        if verify_user(username: username, password: password, usersList: usersList, theUser: &theUser) {
+                        if verify_user(username: usernameLogIn, password: password, usersList: usersList, theUser: &theUser) {
                             // username and password in database -> login
-                            print("Logged In");
-                            self.allUsers = loadImageArray(reference: ref, username: username)
+                            print("Logged In")
+                            self.username = usernameLogIn
                             self.screen = "feed"
                         } else {
                             // user does not exist, clear username and password and make them re-enter
@@ -116,8 +116,7 @@ func verify_user (username: String, password: String, usersList: NSDictionary, t
                                let last = currInfo["last"] as? String,
                                let bio = currInfo["bio"] as? String,
                                let picture = currInfo["picture"] as? String,
-                               //TODO: Change back to array
-                               let matches = currInfo["matches"] as? String {
+                               let matches = currInfo["matches"] as? Array<String> {
                                 editLocalDictionary(
                                     username: username,
                                     password: password,

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Chat {
+    var username: String
     var name: String
     var message: String
 }
@@ -25,13 +26,18 @@ let chatprev = FrameSize(width: screenWidth * 0.4, height: screenHeight * 0.05)
 let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
 
 
+
 struct AllChatsView: View {
     @Binding var screen: String
-    @State var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
-    @State var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
-    @State var sgodes = Chat(name: "Stephanie Godes", message: "yeehaw")
+    @Binding var user2: Chat
+    var emma = Chat(username: "emparz", name: "Emma Parzyck", message: "sup shawty")
+    var vanessa = Chat(username: "vtran", name: "Vanessa Tran", message: "emma sucks lol")
+    var sgodes = Chat(username: "sgodes", name: "Stephanie Godes", message: "yeehaw")
+    
+   
 
     var body: some View {
+        var matches = [emma, vanessa, sgodes]
         VStack {
             // ** start top of screen **
             HStack (alignment: .bottom){
@@ -47,10 +53,14 @@ struct AllChatsView: View {
                 .font(.largeTitle)
                 .bold()
             
-            chatPreview(person: $sgodes)
-            chatPreview(person: $vanessa)
-            chatPreview(person: $emma)
-            
+            ForEach(0..<matches.count, id: \.self) { i in
+                Button {
+                    self.screen = "chat"
+                    self.user2 = matches[i]
+                } label: {
+                    chatPreview(person: matches[i])
+                }
+            }
             Spacer()
             
             bottomBar(screen: $screen)
@@ -63,23 +73,25 @@ struct AllChatsView: View {
 }
 
 struct chatPreview: View {
-    @Binding var person: Chat
+    var person: Chat
     var  body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(Color.white)
+                .foregroundColor(blue)
                 .frame(width: chatframe.width, height: chatframe.height)
             Circle()
-                .foregroundColor(.yellow)
+                .foregroundColor(pink)
                 .frame(width: chatprof.width,
                        height: chatprof.height, alignment: .leading)
                 .offset(x:-100, y:0)
             Text("\(person.name)").bold()
                 .frame(width: chatprev.width, height: chatprev.height, alignment: .leading)
                 .offset(x:30, y:-20)
+                .foregroundColor(cream)
             Text("\(person.message)")
                 .frame(width: chatprev.width, height: chatprev.height, alignment: .topLeading)
                 .offset(x:30, y:20)
+                .foregroundColor(cream)
             
         }
     }

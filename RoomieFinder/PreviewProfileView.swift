@@ -10,6 +10,7 @@ import FirebaseDatabase
 struct PreviewProfileView: View {
     @Binding var screen: String
     @Binding var theUser: userSetup
+    @Binding var image: UIImage
     
     var body: some View {
         VStack {
@@ -43,6 +44,13 @@ struct PreviewProfileView: View {
             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
                    maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topLeading)
             .font(.title2)
+            
+            Image(uiImage: self.image)
+                .resizable()
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(width: 130, height: 130)
+            
             Text("\(theUser.first) \(theUser.last)")
                 .font(.largeTitle)
             
