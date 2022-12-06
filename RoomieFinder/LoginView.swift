@@ -50,12 +50,12 @@ struct LoginView: View {
                 ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
                     // set the database users to the optional NSDictionary usersList
                     if let usersList = snapshot.value as? NSDictionary{
-                        // ** for testing **
-                        // loop through usersList and print the users and their info
-                        for (username, userInfo) in usersList {
-                            print("Username: \(username)\nInformation: \(userInfo)")
-                        }
-                        // ** done testing **
+//                        // ** for testing **
+//                        // loop through usersList and print the users and their info
+//                        for (username, userInfo) in usersList {
+//                            print("Username: \(username)\nInformation: \(userInfo)")
+//                        }
+//                        // ** done testing **
                         
                         // call function verify_user to check if user exists
                         if verify_user(username: usernameLogIn, password: password, usersList: usersList, theUser: &theUser) {
