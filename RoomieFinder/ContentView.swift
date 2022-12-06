@@ -2,11 +2,11 @@
 //  ContentView.swift
 //  RoomieFinder
 //
-//  Created by user228000 on 10/22/22.
-//
 
 import SwiftUI
 import FirebaseDatabase
+
+// defiene colors for whole app
 let gray = Color(red: 51/255.0, green: 55/255.0, blue: 69/255.0)
 let pink = Color(red: 230/255.0, green: 55/255.0, blue: 191/255.0)
 let orange = Color(red: 254/255.0, green: 95/255.0, blue: 85/255.0)
@@ -43,7 +43,14 @@ struct ContentView: View {
     @State var username: String = ""
     
     // set up empty user before loggin in
-    @State var theUser: userSetup = userSetup(username: "null", password: "null", first: "null", last: "null", location: "null", bio: "null", picture: "null", matches: [:])
+    @State var theUser: userSetup = userSetup(username: "null",
+                                              password: "null",
+                                              first: "null",
+                                              last: "null",
+                                              location: "null",
+                                              bio: "null",
+                                              picture: "null",
+                                              matches: [:])
     
     @State var image: UIImage = UIImage(imageLiteralResourceName: "profile")
     
@@ -62,7 +69,7 @@ struct ContentView: View {
         } else if screen == "viewprofile" {
             PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
-            ChatView(screen: $screen, user2: $user2)
+            ChatView(screen: $screen, ref: $ref, theUser: $theUser, user2: $user2)
         }
         else if screen == "allchats"{
             AllChatsView(screen: $screen, theUser: $theUser, user2: $user2, ref: $ref)
@@ -76,7 +83,7 @@ struct ContentView: View {
     }
 }
 
-// button styling
+// blue button styling
 struct BlueButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -89,7 +96,7 @@ struct BlueButton: ButtonStyle {
     }
 }
 
-// button styling
+// orange button styling
 struct OrangeButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -102,7 +109,7 @@ struct OrangeButton: ButtonStyle {
     }
 }
 
-// button styling
+// button styling for previewprofile top buttons
 struct TopIcon: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -112,16 +119,10 @@ struct TopIcon: ButtonStyle {
             .frame(width: 80, height: 40)
             .background(blue)
             .cornerRadius(7.0)
-        // / button formatting
-        // TODO: fix formatting stuff
-        //.frame(maxWidth: UIScreen.main.bounds.size.width * 0.8,
-         //      maxHeight: UIScreen.main.bounds.size.height * 0.1, alignment: .topTrailing)
-       // .font(.title2)
     }
 }
 
-// button styling
-
+// stores data from firebase as a userSetup theUser which is passed to each screen
 func editLocalDictionary(username: String, password: String, first: String, last: String, location: String, bio: String, picture: String, matches: Dictionary<String, Bool>, theUser: inout userSetup) {
     // set the user's information
     theUser.username = username
@@ -134,6 +135,7 @@ func editLocalDictionary(username: String, password: String, first: String, last
     theUser.matches = matches
 }
 
+// the bottom icon bar that appears on multiple screens to switch screens
 struct bottomBar: View {
     @Binding var screen: String
     var  body: some View{

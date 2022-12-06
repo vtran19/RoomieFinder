@@ -1,11 +1,10 @@
-/**
-    Login View Screen for user login into Roomie FInder
- */
-
+//
+//  LoginView.swift
+//  RoomieFinder
+//
 import SwiftUI
 import FirebaseDatabase
 
-// Login view screen
 struct LoginView: View {
     @State var usernameLogIn: String = ""
     @State var password: String = ""
@@ -33,6 +32,7 @@ struct LoginView: View {
                            maxHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
             }
             
+            // display logo, and have text boxes for user information
             Image("logo_with_name")
                  .resizable()
                  .aspectRatio(contentMode: .fill)
@@ -41,9 +41,8 @@ struct LoginView: View {
             TextField("Username", text: $usernameLogIn)
             TextField("Password", text: $password)
                 .padding(.bottom, 20)
+            
             Button("LOG IN") {
-                
-                // **************
                 // Assign database reference
                 self.ref = Database.database().reference()
                 
@@ -51,8 +50,6 @@ struct LoginView: View {
                 ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
                     // set the database users to the optional NSDictionary usersList
                     if let usersList = snapshot.value as? NSDictionary{
-                        print("Got users successfully")
-
                         // ** for testing **
                         // loop through usersList and print the users and their info
                         for (username, userInfo) in usersList {
@@ -92,11 +89,9 @@ struct LoginView: View {
     }
 }
 
-/**
-    Parameters: username, password, and dictionary or users
-    Function determines whether the username and password pair occurr in the dictionary
-    Returns: true or false
-*/
+// Parameters: username, password, and dictionary or users
+// Function determines whether the username and password pair occurr in the dictionary
+// Returns: true or false
 func verify_user (username: String, password: String, usersList: NSDictionary, theUser: inout userSetup)-> Bool {
     // look through usersList to see if the user exists
     var userFound = false
