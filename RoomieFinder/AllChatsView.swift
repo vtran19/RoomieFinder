@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct Chat {
-    var username: String
     var name: String
-    var message: String
+    var message: String?
 }
 
 let screenWidth = UIScreen.main.bounds.size.width
@@ -29,15 +28,22 @@ let chatprof = FrameSize(width: screenWidth * 0.15, height: screenHeight * 0.1)
 
 struct AllChatsView: View {
     @Binding var screen: String
+    @Binding var theUser: userSetup
     @Binding var user2: Chat
-    var emma = Chat(username: "emparz", name: "Emma Parzyck", message: "sup shawty")
-    var vanessa = Chat(username: "vtran", name: "Vanessa Tran", message: "emma sucks lol")
-    var sgodes = Chat(username: "sgodes", name: "Stephanie Godes", message: "yeehaw")
+    var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
+    var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
+    var sgodes = Chat(name: "Stephanie Godes", message: "")
+    var bri = Chat(name: "Brianna Alwell", message: "i hate xcode")
     
    
 
     var body: some View {
-        var matches = [emma, vanessa, sgodes]
+        var chats = [emma, vanessa, sgodes, bri] // placeholder matches
+        
+        // iterate through users, add matches to array
+        //var chats = findMatches(users: <#NSDictionary#>, theUser: theUser)
+        
+        
         VStack {
             // ** start top of screen **
             HStack (alignment: .bottom){
@@ -53,12 +59,12 @@ struct AllChatsView: View {
                 .font(.largeTitle)
                 .bold()
             
-            ForEach(0..<matches.count, id: \.self) { i in
+            ForEach(0..<chats.count, id: \.self) { i in
                 Button {
                     self.screen = "chat"
-                    self.user2 = matches[i]
+                    self.user2 = Chat(name: chats[i].name, message: "hello")
                 } label: {
-                    chatPreview(person: matches[i])
+                    chatPreview(person: chats[i])
                 }
             }
             Spacer()
@@ -88,13 +94,47 @@ struct chatPreview: View {
                 .frame(width: chatprev.width, height: chatprev.height, alignment: .leading)
                 .offset(x:30, y:-20)
                 .foregroundColor(cream)
-            Text("\(person.message)")
+            Text("\(person.message ?? "")")
                 .frame(width: chatprev.width, height: chatprev.height, alignment: .topLeading)
                 .offset(x:30, y:20)
                 .foregroundColor(cream)
             
         }
     }
+}
+
+
+func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
+    var usersData = Array<String>()
+    
+    for (user, userInfo) in users {
+        if let currUser = user as? String {
+            // Tunneling to get user information
+            if let currInfo = userInfo as? NSDictionary {
+                var username = ""
+                var first = "", last = ""
+                var matches = Array<String>()
+                
+                if let currFirst = currInfo["first"] as? String {
+                    first = currFirst
+                }
+                if let currLast = currInfo["last"] as? String {
+                    last = currLast
+                }
+                if let currUser = currInfo["username"] as? String {
+                    username = currUser
+                }
+                var person = first + " " + last
+                if let currMatches = currInfo["matches"] as? Array<String> {
+                    matches = currMatches
+                    if(matches.contains(theUser.username) && theUser.matches.contains(username)){
+                        usersData.append(person)
+                    }
+                }
+            }
+        }
+    }
+    return usersData
 }
 
 struct Previews_AllChatsView_Previews: PreviewProvider {
