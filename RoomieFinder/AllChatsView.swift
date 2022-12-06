@@ -121,17 +121,17 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
                 if let currLast = currInfo["last"] as? String {
                     last = currLast
                 }
-                if let currUser = currInfo["username"] as? String {
-                    username = currUser
-                }
+                
                 var person = first + " " + last
+                
+                
                 // load matches into the dictionary currMatches
                 if let currMatches = currInfo["matches"] as? Dictionary<String, Bool> {
                     //matches = currMatches
                     // check if THEIR matches contain YOU and that it's true
                     if currMatches[theUser.username] != nil && currMatches[theUser.username] == true {
                         // check if YOUR matches contain THEM and that it's true
-                        if theUser.matches[username] != nil && theUser.matches[username]  == true {
+                        if theUser.matches[currUser] != nil && theUser.matches[currUser] == true {
                             usersData.append(person)
                             
                         }
