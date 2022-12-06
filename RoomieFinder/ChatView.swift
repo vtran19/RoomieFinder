@@ -36,30 +36,54 @@ struct ChatView: View {
             
             ScrollView {
                 VStack{
-                    ForEach(0..<3) {_ in
-                        chatbubble()
-                    }
+                    
+                    recievedChatbubble()
+                    sentChatbubble()
+                    sentChatbubble()
+                    recievedChatbubble()
+    
                 }
                 .frame(width: UIScreen.main.bounds.size.width * 0.8)
             }
             .frame(maxHeight: 400)
-            .border(pink)
-            TextField("Message", text: $message)
-                .textFieldStyle(defaultText())
-                .border(blue)
+            HStack{
+                TextField("Message", text: $message)
+                    .font(.system(size: 20))
+                    .padding(20)
+                    .frame(maxWidth: UIScreen.main.bounds.size.width * 0.7, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                    .background(gray.opacity(0.25))
+                    .cornerRadius(10)
+                Button("Send"){}
+                    .padding(20)
+                    .frame(minWidth: UIScreen.main.bounds.size.width * 0.15, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
+                    .background(blue.opacity(0.75))
+                    .foregroundColor(.black)
+                    .cornerRadius(10)
+            }
             Spacer()
         }
         .background(cream)
     }
 }
 
-struct chatbubble: View{
+struct recievedChatbubble: View{
     var  body: some View{
-        RoundedRectangle(cornerRadius: 20)
-            .foregroundColor(gray)
+        RoundedRectangle(cornerRadius: 10)
+            .foregroundColor(gray.opacity(0.25))
             .overlay(Text("hello world"))
-            .foregroundColor(cream)
-            .frame(width: UIScreen.main.bounds.size.width * 0.6, height: UIScreen.main.bounds.size.height * 0.1, alignment: .trailing)
+            .foregroundColor(.black)
+            .frame(maxWidth:UIScreen.main.bounds.size.width * 0.6, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
+            .offset(x:-30, y:0)
+    }
+}
+
+struct sentChatbubble: View{
+    var  body: some View{
+        RoundedRectangle(cornerRadius: 10)
+            .foregroundColor(orange.opacity(0.25))
+            .overlay(Text("hello world"))
+            .foregroundColor(.black)
+            .frame(maxWidth: UIScreen.main.bounds.size.width * 0.6, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .trailing)
             .offset(x:30, y:0)
     }
 }
