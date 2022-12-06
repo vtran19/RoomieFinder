@@ -13,6 +13,7 @@ struct ChatView: View {
     @Binding var ref: DatabaseReference!
     @Binding var theUser: userSetup
     @Binding var user2: Chat
+    @Binding var chatKey: String
     
     @State var message: String = "Message"
     

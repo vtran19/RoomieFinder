@@ -36,6 +36,9 @@ struct ContentView: View {
     
     @State var user2: Chat = exampleUser2
     
+    // Key for chat between two people
+    @State var chatKey: String = ""
+    
     // State for database reference
     @State var ref: DatabaseReference!
     
@@ -69,10 +72,10 @@ struct ContentView: View {
         } else if screen == "viewprofile" {
             PreviewProfileView(screen: $screen, theUser: $theUser, image: $image)
         } else if screen == "chat"{
-            ChatView(screen: $screen, ref: $ref, theUser: $theUser, user2: $user2)
+            ChatView(screen: $screen, ref: $ref, theUser: $theUser, user2: $user2, chatKey: $chatKey)
         }
         else if screen == "allchats"{
-            AllChatsView(screen: $screen, theUser: $theUser, user2: $user2, ref: $ref)
+            AllChatsView(screen: $screen, theUser: $theUser, user2: $user2, ref: $ref, chatKey: $chatKey)
         }
     }
     

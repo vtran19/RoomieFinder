@@ -32,12 +32,14 @@ struct AllChatsView: View {
     @State var isLoaded: Bool = false
     @State var chats: Array<Chat> = []
     @State var matches: Array<String> = []
+    @State var otherUser: String = ""
     
     // Binding
     @Binding var screen: String
     @Binding var theUser: userSetup
     @Binding var user2: Chat
     @Binding var ref: DatabaseReference!
+    @Binding var chatKey: String
     
     // Default chat values
     var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
@@ -64,6 +66,23 @@ struct AllChatsView: View {
                 
                 ForEach(0..<chats.count, id: \.self) { i in
                     Button {
+                        self.ref = Database.database().reference()
+                        
+                        // Set username of
+                        let username = self.theUser.username
+                        let username2 = self.otherUser
+                        
+                        // create an array and sort it alphabetically
+                        var alphabetical = [username, username2]
+                        alphabetical = alphabetical.sorted { (u1, u2) -> Bool in
+                            return (u1.localizedCaseInsensitiveCompare(u2) == .orderedAscending)
+                        }
+                        // the key for messages is the alphabetical usernames concatinated
+                        let usernamesKey = username + username2
+                        
+                        // Set binding to usernames key to pass to chat view
+                        self.chatKey = usernamesKey
+                        
                         self.screen = "chat"
                         self.user2 = Chat(name: chats[i].name, message: "hello")
                     } label: {
@@ -81,9 +100,10 @@ struct AllChatsView: View {
                     // Read users and info from the database
                     ref.child("users").observeSingleEvent(of: .value, with: { snapshot in
                         if let usersList = snapshot.value as? NSDictionary {
-                            // Fill array with data from database
-                            print("Users List: \(usersList)")
-                            self.matches = findMatches(users: usersList, theUser: currentUser)
+                            // Find matches using the list of users from database
+                            let tupleResult = findMatches(users: usersList, theUser: currentUser)
+                            self.matches = tupleResult.0
+                            self.otherUser = tupleResult.1
                             
                             for person in self.matches {
                                 let toAdd = Chat(name: person, message: "default")
@@ -135,8 +155,9 @@ struct chatPreview: View {
 }
 
 
-func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
+func findMatches(users: NSDictionary, theUser: userSetup) -> (Array<String>, String) {
     var usersData = Array<String>()
+    var otherUser = ""
     
     for (user, userInfo) in users {
         if let currUser = user as? String {
@@ -157,7 +178,6 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
                     // loop through user in database's matches to see if it matches user of app
                     for (matchUser, isMatch) in currMatches {
                         // find current user of app within database user matches and check if the match is true
-                        print("Curr User: \(theUser.username)")
                         if matchUser == theUser.username && isMatch == true {
                             // loop through user of app matches and check if they match with that user
                             for (matchUserOther, isMatchOther) in theUser.matches {
@@ -166,6 +186,7 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
                                     // if users both have matches for each other, append to array
                                     let person = first + " " + last
                                     usersData.append(person)
+                                    otherUser = currUser
                                 }
                             }
                         }
@@ -174,8 +195,7 @@ func findMatches(users: NSDictionary, theUser: userSetup) -> Array<String> {
             }
         }
     }
-    print(usersData)
-    return usersData
+    return (usersData, otherUser)
 }
 
 struct Previews_AllChatsView_Previews: PreviewProvider {
