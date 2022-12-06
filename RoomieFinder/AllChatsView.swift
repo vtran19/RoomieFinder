@@ -42,12 +42,6 @@ struct AllChatsView: View {
     @Binding var chatKey: String
     @Binding var messageArray: Array<(String, String)>
     
-    // Default chat values
-    var emma = Chat(name: "Emma Parzyck", message: "sup shawty")
-    var vanessa = Chat(name: "Vanessa Tran", message: "emma sucks lol")
-    var sgodes = Chat(name: "Stephanie Godes", message: "")
-    var bri = Chat(name: "Brianna Alwell", message: "i hate xcode")
-    
     var body: some View {
         VStack {
             // ** start top of screen **
@@ -80,6 +74,7 @@ struct AllChatsView: View {
                         }
                         // the key for messages is the alphabetical usernames concatinated
                         let usernamesKey = username + username2
+                        print(usernamesKey)
                         
                         // Set binding to usernames key to pass to chat view
                         self.chatKey = usernamesKey

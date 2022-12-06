@@ -48,10 +48,10 @@ struct PreviewProfileView: View {
             // ** end top of screen **
             
             // ** profile preview start **
-            
-            
             .padding(.bottom, 25.0)
-            Image(uiImage: self.image)
+            
+            // changed to username
+            Image(theUser.username)
                 .resizable()
                 .scaledToFill()
                 .frame(width: 130, height: 130)

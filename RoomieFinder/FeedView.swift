@@ -65,7 +65,7 @@ struct FeedView: View {
                                 self.allUsers.remove(at: userIndex)
                             }
                         }
-                    });
+                    })
                     
                     // Data is loaded
                     self.isLoaded = true
@@ -80,7 +80,7 @@ struct FeedView: View {
                     Image(self.allUsers[imageIndex].picture)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 370, height: 500)
+                        .frame(width: 360, height: 500)
                         .cornerRadius(15)
                         .clipped()
                         .overlay(
@@ -120,7 +120,7 @@ struct FeedView: View {
                                 self.imageIndex += 1
                             }
                         }
-                        .buttonStyle(OrangeButton())
+                        .buttonStyle(ThinOrangeButton())
                         
                         // Like button
                         Button("LIKE") {
@@ -138,11 +138,10 @@ struct FeedView: View {
                                 self.imageIndex += 1
                             }
                         }
-                        .buttonStyle(OrangeButton())
+                        .buttonStyle(ThinOrangeButton())
                         
                     }
                 }
-                
             }
             
             // Bottom of screen

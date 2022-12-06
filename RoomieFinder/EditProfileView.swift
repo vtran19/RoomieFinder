@@ -37,7 +37,7 @@ struct EditProfileView: View {
                 .font(.largeTitle)
                 .foregroundColor(gray)
             
-            Image(uiImage: self.image)
+            Image(theUser.username)
                 .resizable()
                 .scaledToFill()
                 .clipShape(Circle())
