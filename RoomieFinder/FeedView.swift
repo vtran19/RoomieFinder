@@ -93,12 +93,14 @@ struct FeedView: View {
                                         .foregroundColor(.white)
                                         .background(.black.opacity(0.5))
                                         .cornerRadius(10)
+                                        .frame(width: 400.0, height: 70.0, alignment: .leading)
                                     Text("Location: \(self.allUsers[imageIndex].location)\nBio: \(self.allUsers[imageIndex].bio)")
                                         .padding(20)
                                         .font(.subheadline)
                                         .foregroundColor(.white)
                                         .background(.black.opacity(0.5))
                                         .cornerRadius(10)
+                                        .frame(width: 400.0, height: 100.0, alignment: .leading)
                                 }
                             },
                             alignment: .bottomLeading

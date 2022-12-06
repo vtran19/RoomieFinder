@@ -73,18 +73,18 @@ struct AllChatsView: View {
                             return (u1.localizedCaseInsensitiveCompare(u2) == .orderedAscending)
                         }
                         // the key for messages is the alphabetical usernames concatinated
-                        let usernamesKey = username + username2
+                        let usernamesKey = alphabetical[0] + alphabetical[1]
                         print(usernamesKey)
                         
                         // Set binding to usernames key to pass to chat view
                         self.chatKey = usernamesKey
-                        var messageArray: Array<(String, String)> = []
+                        var messageArray: Array<(String, String)> = [("", "")]
                         // get all of the chats under this key from firebase and display
                         ref.child("chats/\(chatKey)").observeSingleEvent(of: .value, with: { snapshot in
-                            if let chats = snapshot.value as? NSDictionary {
+                            if let convos = snapshot.value as? NSDictionary {
                                 // the key is m1, m2, m3
                                 // the chatInfo is name: ""; message: "";
-                                for (_, chatInfo) in chats {
+                                for (_, chatInfo) in convos {
                                     // verify we can get all the info from the message
                                     if let currChatInfo = chatInfo as? NSDictionary {
                                         if let name = currChatInfo["name"] as? String,

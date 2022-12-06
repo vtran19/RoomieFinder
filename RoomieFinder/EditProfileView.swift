@@ -37,6 +37,7 @@ struct EditProfileView: View {
                 .font(.largeTitle)
                 .foregroundColor(gray)
             
+            // changed to username
             Image(theUser.username)
                 .resizable()
                 .scaledToFill()

@@ -16,7 +16,7 @@ struct ChatView: View {
     @Binding var chatKey: String
     @Binding var messageArray: Array<(String, String)>
     
-    @State var message: String = "Message"
+    @State var message: String = ""
     @State var counter: Int = 1
     
     var body: some View {
@@ -48,10 +48,9 @@ struct ChatView: View {
             ScrollView {
                 VStack{
                     // display messages
-                    //sentChatbubble(message: self.messageArray[0].1)
-                    //sentChatbubble(message: self.messageArray[1].1)
-                    //sentChatbubble(message: self.messageArray[2].1)
-                    //sentChatbubble(message: self.messageArray[3].1)
+//                    ForEach((0...messageArray.count), id: \.self) {
+//                        Text("\(messageArray[$0].0): \(messageArray[$0].1)")
+//                    }
                 }
                 .frame(width: UIScreen.main.bounds.size.width * 0.8)
             }
