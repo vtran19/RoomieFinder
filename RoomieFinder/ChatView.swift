@@ -17,11 +17,13 @@ struct ChatView: View {
     @Binding var messageArray: Array<(String, String)>
     
     @State var message: String = "Message"
+    @State var counter: Int = 1
     
     var body: some View {
         VStack {
             // Back Button
             Button {
+                self.chatKey = ""
                 self.messageArray = []
                 self.screen = "allchats"
             } label: {
@@ -46,15 +48,10 @@ struct ChatView: View {
             ScrollView {
                 VStack{
                     // display messages
-                    for currMessage in self.messageArray {
-                        // your message
-                        if currMessage.0 == theUser.username {
-                            sentChatbubble(message: currMessage.1)
-                        // their message
-                        } else {
-                            recievedChatbubble(message: currMessage.1)
-                        }
-                    }
+                    //sentChatbubble(message: self.messageArray[0].1)
+                    //sentChatbubble(message: self.messageArray[1].1)
+                    //sentChatbubble(message: self.messageArray[2].1)
+                    //sentChatbubble(message: self.messageArray[3].1)
                 }
                 .frame(width: UIScreen.main.bounds.size.width * 0.8)
             }
@@ -67,8 +64,17 @@ struct ChatView: View {
                     .background(gray.opacity(0.25))
                     .cornerRadius(10)
                 Button("Send") {
-                    // TODO: sending messages
-                    // TODO: every time we send, re-call the screen
+                    self.ref = Database.database().reference()
+                    
+                    // Send message to database
+                    let messageToAdd = $message.wrappedValue
+                    self.ref.child("chats/\(self.chatKey)/\(counter)").setValue(["name": theUser.username, "message": messageToAdd])
+                    
+                    // Increment counter for messages
+                    self.counter += 1
+                    
+                    // Recall screen
+                    self.screen = "chat"
                 }
                     .padding(20)
                     .frame(minWidth: UIScreen.main.bounds.size.width * 0.15, minHeight: UIScreen.main.bounds.size.height * 0.05, alignment: .leading)
