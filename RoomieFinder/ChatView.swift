@@ -42,18 +42,16 @@ struct ChatView: View {
             
             // get the chat from firebase
             // Assign database reference
-           // self.ref = Database.database().reference()
+            // self.ref = Database.database().reference()
             //convos = get_chats(theUser.username, user2.username2, allChats: NSDictionary)
             
             
             ScrollView {
                 VStack{
-                    
                     recievedChatbubble()
                     sentChatbubble()
                     sentChatbubble()
                     recievedChatbubble()
-    
                 }
                 .frame(width: UIScreen.main.bounds.size.width * 0.8)
             }
@@ -80,23 +78,6 @@ struct ChatView: View {
 //                //let childUpdates = ["/posts/\(key)": post,
 //                //"/user-posts/\(userID)/\(key)/": post]
 //
-//
-//
-//                // Cast data to compatible values for database
-//                let first = self.first as NSString
-//                let last = self.last as NSString
-//                let password = self.password as NSString
-//                let location = self.location as NSString
-//
-//                // store data into database
-//                self.ref.child("users/\(self.username)/").setValue([
-//                    "first": first,
-//                    "last": last,
-//                    "password": password,
-//                    "locaiton": location,
-//                    "bio": "* create your bio *",
-//                    "picture": self.username,
-//                    "matches": [:]])
 //            }
         }
         .background(cream)

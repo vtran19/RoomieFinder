@@ -79,7 +79,7 @@ struct SignUpView: View {
                         "first": first,
                         "last": last,
                         "password": password,
-                        "locaiton": location,
+                        "location": location,
                         "bio": "* create your bio *",
                         "picture": self.username,
                         "matches": [:]])
